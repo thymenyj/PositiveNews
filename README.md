@@ -8,12 +8,11 @@ Postive news creates a more positive start
   An application with only positive news can create a more positive and fresh start of the day. The app shows random
   and personal based articles. 
   
-### Project overview 
+## Solution
+
 ![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/IMG-4820.jpg)
 
-## Main features
-
-### Activities:
+### Features:
     
   Creating an account:
   - Login activity 
@@ -34,23 +33,22 @@ Postive news creates a more positive start
       can be updated.
   - Saved articles activity:
       Gives a list of the saved articles of the user
-      
-### Pop-ups:
-     
+ 
+  Pop-ups:    
   - Succes login/ register/ reset/ saved article pop-up
   - Random news articles pop-up:
       The (first time of a day) the app is used, a pop-up is shown with a random positive 
       news article. 
   
-## Minimal viable product:
+### Minimal viable product:
     
-### Minimal features:
+Minimal features:
   - creating account (excluding forgot password)
   - news feed (all features)
   - profile (excluding saved articles)
   - pop-ups (all features)
-    
-### Additional features:
+
+Additional features:
   - save article function
   - search articles based on location
   - like article function to automatic update user preference
