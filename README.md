@@ -56,7 +56,8 @@ Postive news creates a more positive start
   Prequisites:
     
     Data sources:
-      - (newwsapi.org) (getting news articles)
+      - http://newwsapi.org (getting news articles)
+      - http://eventregistry.org (getting news articles)
     
     External components:
       - firebase (store users and profile)
