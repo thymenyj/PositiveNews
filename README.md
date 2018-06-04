@@ -69,5 +69,8 @@ Postive news creates a more positive start
     Hardest parts:
     - displaying the correct articles (checking what articles are positive) 
     - preference based feeds 
+    
+    
+![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/IMG-4820.jpg)
 
  
