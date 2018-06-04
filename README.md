@@ -61,7 +61,13 @@ Postive news creates a more positive start
     
     External components:
       - firebase (store users and profile)
+      
+    Similar apps:
+      news apps like NOS, NU etc. 
+      
   
-  
+    Hardest parts:
+    - displaying the correct articles (checking what articles are positive) 
+    - preference based feeds 
 
  
