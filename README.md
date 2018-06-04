@@ -1,6 +1,6 @@
 # PositiveNews
 
-Postive news creates a more positive start
+Postive news creates a more positive start of the day
 
 ## Project overview
 
