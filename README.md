@@ -10,7 +10,8 @@ Postive news creates a more positive start of the day
   
 ## Solution
 
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/IMG-4820.jpg)
+![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/AppProjectOverview.JPG)
+![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/AppProjectTableOverview.JPG)
 
 ### Features:
     
