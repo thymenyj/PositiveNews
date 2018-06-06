@@ -18,9 +18,9 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ResetActivity" />
-        <activity android:name=".PersonalFeedActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".InitialPreferenceActivity" />
+        <activity android:name=".PersonalFeedActivity"></activity>
     </application>
 
 </manifest>
