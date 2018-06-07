@@ -1,12 +1,15 @@
 package com.example.thymen.positivenews;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,12 +21,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
-    public EditText registerName, registerEmail, registerPassword;
-    public TextView registerBack;
-    public ImageView registerRegister;
+    public TextView registerName, registerEmail, registerPassword;
+    public Button registerRegister, registerBack;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference database;
 
@@ -31,6 +35,16 @@ public class RegisterActivity extends AppCompatActivity {
     public ArrayList<String> preferences, savedArticles;
     public String validateName, validateEmail, validatePassword;
 
+    public RelativeLayout rellay1, rellay2;
+
+    Handler handler = new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            rellay1.setVisibility(View.VISIBLE);
+            rellay2.setVisibility(View.VISIBLE);
+        }
+    };
 
 
     @Override
@@ -39,6 +53,10 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         database = FirebaseDatabase.getInstance().getReference();
+        rellay1 = findViewById(R.id.rellay1);
+        rellay2 = findViewById(R.id.rellay2);
+
+        handler.postDelayed(runnable, 750); //750 is the timeout for the splash
 
         registerName = findViewById(R.id.registerName);
         registerEmail = findViewById(R.id.registerEmail);
