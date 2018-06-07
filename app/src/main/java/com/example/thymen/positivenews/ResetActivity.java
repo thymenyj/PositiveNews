@@ -18,17 +18,34 @@ import com.google.firebase.database.DatabaseReference;
 public class ResetActivity extends AppCompatActivity {
 
     public EditText resetEmail;
-    public TextView resetBack;
-    public ImageView resetReset;
+    public android.widget.Button resetBack, resetReset;
+
     private FirebaseAuth firebaseAuth;
 
     public String userEmail;
+
+    public android.widget.RelativeLayout rellay1, rellay2;
+
+    android.os.Handler handler = new android.os.Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            rellay1.setVisibility(View.VISIBLE);
+            rellay2.setVisibility(View.VISIBLE);
+        }
+    };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset);
+
+        rellay1 = findViewById(R.id.rellay1);
+        rellay2 = findViewById(R.id.rellay2);
+
+        handler.postDelayed(runnable, 750); //750 is the timeout for the splash
+
 
         resetEmail = findViewById(R.id.resetEmail);
         resetReset = findViewById(R.id.resetReset);
