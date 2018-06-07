@@ -18,14 +18,15 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ResetActivity" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ProfileFragment" />
         <activity android:name=".InitialPreferenceActivity" />
-        <activity android:name=".PersonalFeedActivity" />
+        <activity android:name=".PersonalFeedFragment" />
         <activity android:name=".ArticleActivity" />
         <activity
             android:name=".test"
             android:label="@string/title_activity_test" />
-        <activity android:name=".TrendingFeedActivity"></activity>
+        <activity android:name=".TrendingFeedFragment" />
+        <activity android:name=".HomeActivity"></activity>
     </application>
 
 </manifest>
