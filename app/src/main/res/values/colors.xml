@@ -11,4 +11,7 @@
     <color name="gradStop">#23A7D8</color>
     <color name="grey">#A9A9A9</color>
 
+    <color name="dotInactive">#a9b4bb</color>
+    <color name="dotActive">#000000</color>
+
 </resources>
