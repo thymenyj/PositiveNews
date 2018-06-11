@@ -27,7 +27,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:itemBackground="@color/white"
-        app:itemIconTint="@color/grey"
+        app:itemIconTint="@drawable/color_icon"
         app:itemTextColor="@color/grey"
         app:menu="@menu/navigation"/>
 

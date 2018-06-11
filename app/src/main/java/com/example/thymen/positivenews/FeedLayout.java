@@ -27,8 +27,10 @@ public class FeedLayout extends ArrayAdapter<NewsArticle> {
         }
         TextView name = convertView.findViewById(R.id.titleItem);
         ImageView image = convertView.findViewById(R.id.imageItem);
+        TextView body = convertView.findViewById(R.id.bodyItem);
 
         name.setText(object.getTitle());
+        body.setText(object.getBody());
         Picasso.with(getContext()).load(object.getImage()).into(image);
 
         return convertView;

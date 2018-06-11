@@ -91,8 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 User newUser = new User();
                                 newUser.setName(userName);
                                 newUser.setEmail(userEmail);
-                                newUser.setPreferences(preferences);
-                                newUser.setSavedArticles(savedArticles);
+                                newUser.setFirstLogin("true");
                                 database.child("users").child(userId).setValue(newUser);
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);

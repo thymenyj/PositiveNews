@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class User {
     String name;
     String email;
+    String firstLogin;
     ArrayList<String> preferences;
     ArrayList<String> savedArticles;
 
@@ -24,21 +25,11 @@ public class User {
         this.email = email;
     }
 
-    public ArrayList<String> getPreferences() {
-        return preferences;
-    }
+    public String getFirstLogin() { return firstLogin; }
 
-    public void setPreferences(ArrayList<String> preferences) {
-        this.preferences = preferences;
-    }
+    public void setFirstLogin(String firstLogin) { this.firstLogin = firstLogin; }
 
-    public ArrayList<String> getSavedArticles() {
-        return savedArticles;
-    }
 
-    public void setSavedArticles(ArrayList<String> savedArticles) {
-        this.savedArticles = savedArticles;
-    }
 
 }
 

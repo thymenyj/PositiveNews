@@ -10,7 +10,9 @@
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/login_background"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/grey"
         android:paddingBottom="20dp">
 
         <RelativeLayout
@@ -28,7 +30,7 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/icon_profile"
                 android:padding="3dp"
-                android:scaleType="centerInside"/>
+                android:scaleType="centerInside" />
 
 
         </RelativeLayout>
@@ -87,18 +89,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="453K"
-                    android:textColor="@color/white"
+                    android:text="Bio"
+                    android:textColor="@color/grey"
                     android:textSize="25sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="followers"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -124,18 +118,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="873"
-                    android:textColor="@color/white"
+                    android:text="Preferences"
+                    android:textColor="@color/grey"
                     android:textSize="25sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="following"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -164,17 +150,19 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/emailTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email"
-                    android:textColor="@color/white"
+                    android:textColor="@color/grey"
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/profileEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="joey@sharenofood.com"
+                    android:text="userEmail"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -195,15 +183,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone"
-                    android:textColor="@color/white"
+                    android:text="Phonenumber"
+                    android:textColor="@color/grey"
                     android:textSize="13sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="+1-202-555-0157"
+                    android:text="06-********"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -225,7 +213,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Twitter"
-                    android:textColor="@color/white"
+                    android:textColor="@color/grey"
                     android:textSize="13sp" />
 
                 <View
@@ -246,14 +234,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Facebook"
-                    android:textColor="@color/white"
+                    android:textColor="@color/grey"
                     android:textSize="13sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="facebook.com/joeytrib"
+                    android:text="facebook.com/user"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
