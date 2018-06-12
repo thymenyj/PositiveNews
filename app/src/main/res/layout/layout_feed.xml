@@ -6,30 +6,15 @@
     android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/imageItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
-
     <TextView
         android:id="@+id/titleItem"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageItem"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+        android:gravity="center_horizontal"
         android:text="TextView"
         android:textSize="28sp" />
-
-    <TextView
-        android:id="@+id/bodyItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/titleItem"
-        android:text="TextView"
-        android:textSize="16sp" />
 
 </RelativeLayout>
