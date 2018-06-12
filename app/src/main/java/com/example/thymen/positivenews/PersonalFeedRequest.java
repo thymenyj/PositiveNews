@@ -90,7 +90,7 @@ public class PersonalFeedRequest implements Response.Listener<JSONObject>, Respo
     }
 
     public String getURL() {
-        String categoryUrl = calculatePreferenceCategory();
+        String categoryUrl = "business";
         url = "https://newsapi.org/v2/top-headlines?category="+ categoryUrl + "&apiKey=95523811729048518c1cf1c3da766379";
         return url;
     }
@@ -111,12 +111,13 @@ public class PersonalFeedRequest implements Response.Listener<JSONObject>, Respo
                 technologyPreference = (dataSnapshot.child("users").child(userId).child("preferences").child("technology").getValue(Float.class) + sportsPreference);
                 totalPreference = technologyPreference;
 
-                Log.d("float", Float.toString(businessPreference));
-                Log.d("float", Float.toString(entertainmentPreference));
-                Log.d("float", Float.toString(healthPreference));
-                Log.d("float", Float.toString(sciencePreference));
-                Log.d("float", Float.toString(sportsPreference));
-                Log.d("float", Float.toString(technologyPreference));
+                Log.d("bpref", Float.toString(businessPreference));
+                Log.d("entpref", Float.toString(entertainmentPreference));
+                Log.d("heapref", Float.toString(healthPreference));
+                Log.d("scipref", Float.toString(sciencePreference));
+                Log.d("sportpref", Float.toString(sportsPreference));
+                Log.d("techpref", Float.toString(technologyPreference));
+                Log.d("totalpref", Float.toString(totalPreference));
 
                 businessScore = businessPreference/ totalPreference;
                 entertainmentScore = entertainmentPreference/ totalPreference;
@@ -124,6 +125,42 @@ public class PersonalFeedRequest implements Response.Listener<JSONObject>, Respo
                 scienceScore = sciencePreference/ totalPreference;
                 sportsScore = sportsPreference/ totalPreference;
                 technologyScore = technologyPreference/ totalPreference;
+
+                Log.d("busscore", Float.toString(businessScore));
+                Log.d("entscore", Float.toString(entertainmentScore));
+                Log.d("heascore", Float.toString(healthScore));
+                Log.d("sciscore", Float.toString(scienceScore));
+                Log.d("sportscore", Float.toString(sportsScore));
+                Log.d("techscore", Float.toString(technologyScore));
+
+                float rangeMin = 0.0f;
+                float rangeMax = 1.0f;
+                Random r = new Random();
+                float createdRanNum = rangeMin + (rangeMax - rangeMin) * r.nextFloat();
+                Log.d("randomFloat", Float.toString(createdRanNum));
+
+                if (createdRanNum >= 0 && createdRanNum < businessScore) {
+                    category = "business";
+                }
+                else if (createdRanNum >= businessScore && createdRanNum < entertainmentScore) {
+                    category = "entertainment";
+                }
+                else if (createdRanNum >= entertainmentScore && createdRanNum < healthScore) {
+                    category = "health";
+                }
+                else if (createdRanNum >= healthScore && createdRanNum < scienceScore) {
+                    category = "science";
+                }
+                else if (createdRanNum >= scienceScore && createdRanNum < sportsScore) {
+                    category = "sports";
+                }
+                else if (createdRanNum >= sportsScore && createdRanNum < technologyScore) {
+                    category = "entertainment";
+                }
+                else {
+                    category = "technology";
+                }
+                Log.d("category", category);
             }
 
             @Override
@@ -133,32 +170,6 @@ public class PersonalFeedRequest implements Response.Listener<JSONObject>, Respo
         };
         databaseReference.addValueEventListener(postListener);
 
-        float rangeMin = 0.0f;
-        float rangeMax = 1.0f;
-        Random r = new Random();
-        float createdRanNum = rangeMin + (rangeMax - rangeMin) * r.nextFloat();
-
-        if (createdRanNum > 0 && createdRanNum < businessScore) {
-            category = "business";
-        }
-        else if (createdRanNum > businessScore && createdRanNum < entertainmentScore) {
-            category = "entertainment";
-        }
-        else if (createdRanNum > entertainmentScore && createdRanNum < healthScore) {
-            category = "health";
-        }
-        else if (createdRanNum > healthScore && createdRanNum < scienceScore) {
-            category = "science";
-        }
-        else if (createdRanNum > scienceScore && createdRanNum < sportsScore) {
-            category = "sports";
-        }
-        else if (createdRanNum > sportsScore && createdRanNum < technologyScore) {
-            category = "entertainment";
-        }
-        else if (createdRanNum > technologyScore && createdRanNum < 1) {
-            category = "technology";
-        }
 
         return category;
     }

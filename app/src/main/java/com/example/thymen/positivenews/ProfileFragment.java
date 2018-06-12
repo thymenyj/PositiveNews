@@ -25,7 +25,7 @@ import java.util.Comparator;
 
 
 public class ProfileFragment extends Fragment {
-    public DatabaseReference database;
+    public DatabaseReference databaseReference;
     public TextView profileName;
     public TextView profileEmail;
 
@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container,false);
 
-        database = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         profileName = view.findViewById(R.id.profileName);
         profileEmail = view.findViewById(R.id.profileEmail);
@@ -57,7 +57,7 @@ public class ProfileFragment extends Fragment {
                 Log.d("TAG", "something went wrong", databaseError.toException());
             }
         };
-        database.addValueEventListener(postListener);
+        databaseReference.addValueEventListener(postListener);
 
         return view;
     }
