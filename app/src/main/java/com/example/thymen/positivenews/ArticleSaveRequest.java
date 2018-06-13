@@ -22,11 +22,12 @@
 //    private String userId;
 //    private String category;
 //    private float oldScore;
+//    private ArrayList<NewsArticle> savedArticleList;
 //
 //
 //    public interface Callback {
 //        void gotArticleSave (ArrayList<NewsArticle> savedArticleList);
-//        void gotArticleLikeSave (String message);
+//        void gotArticleSaveError (String message);
 //    }
 //
 //    public ArticleSaveRequest(Context context) {
@@ -39,36 +40,34 @@
 //        databaseReference = FirebaseDatabase.getInstance().getReference();
 //        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 //        userId = user.getUid();
-//        Query updatePreferenceScore =  databaseReference.child("users").child(userId).child("preferences");
+//        Query updatePreferenceScore =  databaseReference.child("users").child(userId);
 //        updatePreferenceScore.addListenerForSingleValueEvent(new ValueEventListener() {
-//
 //            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                Query updatePreferenceScore =  databaseReference.child("users").child(userId).child("preferences");
-//                updatePreferenceScore.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot postSnapshot) {
-//                        oldScore = postSnapshot.child("business").getValue(Float.class);
-//
-//                        activity.gotArticleSave(savedArticleList);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//
-//                    }
-//
-//                });
+//            public void onDataChange(DataSnapshot postSnapshot) {
+//                if (postSnapshot.child("savedArticles").getValue(ArrayList.class) == null){
+//                    savedArticleList = new ArrayList();
+//                    NewsArticle saveArticle = new NewsArticle();
+//                    saveArticle.setTitle("testing");
+//                    saveArticle.setCategories("testing");
+//                    savedArticleList.add(saveArticle);
+//                    databaseReference.child("users").child(userId).child("savedArticles").setValue(savedArticleList);
+//                } else {
+//                    savedArticleList =  postSnapshot.child("users").child(userId).child("savedArticles").getValue(ArrayList.class);
+//                    NewsArticle saveArticle = new NewsArticle();
+//                    saveArticle.setTitle("testing");
+//                    saveArticle.setCategories("testing");
+//                    savedArticleList.add(saveArticle);
+//                    databaseReference.child("users").child(userId).child("savedArticles").setValue(savedArticleList);
+//                }
 //
 //            }
 //
 //            @Override
 //            public void onCancelled(DatabaseError databaseError) {
-//                String message = databaseError.getMessage();
-//                activity.gotArticleSaveError(message);
-//            }
-//        });
 //
+//            }
+//
+//        });
 //    }
 //
 //}

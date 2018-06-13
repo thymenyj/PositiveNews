@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Logger;
 
 public class LoginActivity extends AppCompatActivity {
     public Button loginLogin, loginRegister, loginReset;
@@ -41,6 +43,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase.setLogLevel(Logger.Level.DEBUG);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -84,8 +89,10 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "please enter email and password", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    String password = loginPassword.getText().toString();
-                    String name = loginUsername.getText().toString();
+//                    String password = loginPassword.getText().toString();
+//                    String name = loginUsername.getText().toString();
+                    String password = "test123";
+                    String name = "test@gmail.com";
                     validate(name, password);
 
                 }

@@ -2,7 +2,10 @@ package com.example.thymen.positivenews;
 
 import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +31,9 @@ public class ProfileFragment extends Fragment {
     public DatabaseReference databaseReference;
     public TextView profileName;
     public TextView profileEmail;
+    private TabLayout tabLayout;
+    private AppBarLayout appBarLayout;
+    private ViewPager viewPager;
 
     @Nullable
     @Override
@@ -36,28 +42,35 @@ public class ProfileFragment extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        profileName = view.findViewById(R.id.profileName);
-        profileEmail = view.findViewById(R.id.profileEmail);
+        tabLayout = view.findViewById(R.id.profileTabLayout);
+        appBarLayout = view.findViewById(R.id.profileTabBar);
+        viewPager = view.findViewById(R.id.viewPager);
 
-        ValueEventListener postListener = new ValueEventListener() {
+        ProfileTabAdapter profileTabAdapter = new ProfileTabAdapter(getFragmentManager());
+        profileTabAdapter.addFragment(new ProfileBioTab(), "Bio");
+        profileTabAdapter.addFragment(new ProfileSavedArticlesTab(), "Saved Articles");
+        profileTabAdapter.addFragment(new ProfilePreferencesTab(), "Preferences");
 
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                String userId = user.getUid();
-                String name = dataSnapshot.child("users").child(userId).child("name").getValue().toString();
-                String email = dataSnapshot.child("users").child(userId).child("email").getValue().toString();
-                profileName.setText(name);
-                profileEmail.setText(email);
+        viewPager.setAdapter(profileTabAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("TAG", "something went wrong", databaseError.toException());
-            }
-        };
-        databaseReference.addValueEventListener(postListener);
+//        ValueEventListener postListener = new ValueEventListener() {
+//
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//                String userId = user.getUid();
+//                String name = dataSnapshot.child("users").child(userId).child("name").getValue().toString();
+//                String email = dataSnapshot.child("users").child(userId).child("email").getValue().toString();
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Log.d("TAG", "something went wrong", databaseError.toException());
+//            }
+//        };
+//        databaseReference.addValueEventListener(postListener);
 
         return view;
     }

@@ -14,6 +14,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Logger;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
@@ -30,6 +31,7 @@ public class PersonalFeedUrlRequest {
     private DatabaseReference databaseReference;
     private String userId;
     private String category;
+    private FirebaseDatabase firebaseDatabase;
 
 
     private float businessPreference, entertainmentPreference, healthPreference, sciencePreference, sportsPreference, technologyPreference, totalPreference;
@@ -47,7 +49,10 @@ public class PersonalFeedUrlRequest {
     public void getPersonalFeedUrl(final Callback activity) {
         this.activity = activity;
 
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+//        firebaseDatabase.setLogLevel(Logger.Level.DEBUG);
+
+        databaseReference = firebaseDatabase.getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
         Query updatePreferenceScore =  databaseReference.child("users").child(userId).child("preferences");
