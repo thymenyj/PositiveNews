@@ -29,8 +29,7 @@ public class FeedLayout extends ArrayAdapter<NewsArticle> {
         TextView item = convertView.findViewById(R.id.titleItem);
 
         item.setText(object.getTitle());
-        item.setBackgroundResource(R.drawable.background_health);
-        String categoryPicture = object.getCategories();
+//        String categoryPicture = object.getCategories();
 //        if (categoryPicture == "business") {
 //            item.setBackgroundResource(R.drawable.background_business);
 //        }

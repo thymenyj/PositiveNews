@@ -53,7 +53,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         database = FirebaseDatabase.getInstance().getReference();
-
         rellay1 = findViewById(R.id.rellay1);
         rellay2 = findViewById(R.id.rellay2);
 
@@ -65,10 +64,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         registerRegister = findViewById(R.id.registerRegister);
         registerBack = findViewById(R.id.registerBack);
-
-        preferences = new ArrayList<>();
-        savedArticles = new ArrayList<>();
-
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -93,6 +88,15 @@ public class RegisterActivity extends AppCompatActivity {
                                 newUser.setEmail(userEmail);
                                 newUser.setFirstLogin("true");
                                 database.child("users").child(userId).setValue(newUser);
+
+                                database.child("users").child(userId).child("preferences").child("business").setValue(1);
+                                database.child("users").child(userId).child("preferences").child("entertainment").setValue(1);
+                                database.child("users").child(userId).child("preferences").child("health").setValue(1);
+                                database.child("users").child(userId).child("preferences").child("science").setValue(1);
+                                database.child("users").child(userId).child("preferences").child("sports").setValue(1);
+                                database.child("users").child(userId).child("preferences").child("technology").setValue(1);
+                                                                                                                                            database.child("users").child(userId).child("preferences").child("business").setValue(1);
+                                                                                                                                                                                                            database.child("users").child(userId).child("preferences").child("business").setValue(1);
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             } else {

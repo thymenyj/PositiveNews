@@ -46,7 +46,7 @@ public class ProfileFragment extends Fragment {
         appBarLayout = view.findViewById(R.id.profileTabBar);
         viewPager = view.findViewById(R.id.viewPager);
 
-        ProfileTabAdapter profileTabAdapter = new ProfileTabAdapter(getFragmentManager());
+        ProfileTabAdapter profileTabAdapter = new ProfileTabAdapter(getChildFragmentManager());
         profileTabAdapter.addFragment(new ProfileBioTab(), "Bio");
         profileTabAdapter.addFragment(new ProfileSavedArticlesTab(), "Saved Articles");
         profileTabAdapter.addFragment(new ProfilePreferencesTab(), "Preferences");
@@ -54,74 +54,7 @@ public class ProfileFragment extends Fragment {
         viewPager.setAdapter(profileTabAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-//        ValueEventListener postListener = new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//                String userId = user.getUid();
-//                String name = dataSnapshot.child("users").child(userId).child("name").getValue().toString();
-//                String email = dataSnapshot.child("users").child(userId).child("email").getValue().toString();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                Log.d("TAG", "something went wrong", databaseError.toException());
-//            }
-//        };
-//        databaseReference.addValueEventListener(postListener);
-
         return view;
     }
 
 }
-
-
-
-
-
-
-
-//package com.example.thymen.positivenews;
-//
-//import android.app.Fragment;
-//import android.content.Intent;
-//import android.support.annotation.NonNull;
-//import android.support.design.widget.BottomNavigationView;
-//import android.support.v7.app.AppCompatActivity;
-//import android.os.Bundle;
-//import android.view.MenuItem;
-//
-//public class ProfileFragment extends AppCompatActivity {
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_profile);
-//
-//        BottomNavigationView navigation = findViewById(R.id.navigationView);
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-//    }
-//
-//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            switch (item.getItemId()) {
-//                case R.id.navigation_profile:
-//                    return true;
-//                case R.id.navigation_home:
-//                    Intent intentPersonal = new Intent(ProfileFragment.this, PersonalFeedFragment.class);
-//                    startActivity(intentPersonal);
-//                    return true;
-//                case R.id.navigation_trending:
-//                    Intent intentTrending = new Intent(ProfileFragment.this, TrendingFeedFragment.class);
-//                    startActivity(intentTrending);
-//                    return true;
-//            }
-//            return false;
-//        }
-//    };
-//}

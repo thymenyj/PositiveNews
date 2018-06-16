@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.thymen.positivenews">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,11 +21,9 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ResetActivity" />
         <activity android:name=".ProfileFragment" />
-        <activity android:name=".InitialPreferenceActivity" />
-        <activity android:name=".PersonalFeedFragment" />
+        <activity android:name=".HomePersonalTab" />
         <activity android:name=".ArticleActivity" />
         <activity android:name=".TrendingFeedFragment" />
-        <activity android:name=".testfeed" />
         <activity android:name=".WalkthroughActivity" />
     </application>
 

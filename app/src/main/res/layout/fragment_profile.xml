@@ -5,21 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment"
-    android:orientation="vertical">
-
-
+    android:orientation="vertical"
+    android:background="@drawable/login_background">
 
     <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:gravity="center"
             android:elevation="10dp"
+            android:background="@color/transparent"
             android:id="@+id/profileTabBar" >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:src="@drawable/icon_profile" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:padding="10dp"
+            android:src="@drawable/icon_profiletab"
+            />
     </android.support.design.widget.AppBarLayout>
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
@@ -34,6 +37,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/white"/>
 
 </LinearLayout>

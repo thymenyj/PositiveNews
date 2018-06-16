@@ -4,27 +4,28 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileTabAdapter extends FragmentPagerAdapter {
+public class HomeTabAdapter extends FragmentPagerAdapter {
     private final List<Fragment> fragmentList = new ArrayList();
     private final List<String> fragmentListTitles = new ArrayList();
 
-    public ProfileTabAdapter(FragmentManager fm) {
+    public HomeTabAdapter(FragmentManager fm) {
         super(fm);
     }
 
     @Override
     public Fragment getItem(int position) {
+
+        Log.d("getItem", "fragmentpager");
         switch(position){
             case 0:
-                return new ProfileBioTab();
+                return new HomePersonalTab();
             case 1:
-                return new ProfileSavedArticlesTab();
-            case 2:
-                return new ProfilePreferencesTab();
+                return new HomeCountryTab();
             default:
                 return null;
         }

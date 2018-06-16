@@ -1,10 +1,17 @@
 package com.example.thymen.positivenews;
 
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -23,22 +30,37 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticleActivity extends AppCompatActivity implements ArticleLikeRequest.Callback{
+public class ArticleActivity extends AppCompatActivity implements ArticleLikeRequest.Callback, ArticleSaveRequest.Callback {
     private FloatingActionButton likeButton, saveButton;
     private DatabaseReference databaseReference;
-    private String categoryOfArticle, savedArticle;
+    private String categoryOfArticle, titleOfArticle;
     private ArrayList<NewsArticle> savedArticleList;
     float oldScore, newScore;
     private String userId;
     private FirebaseDatabase firebaseDatabase;
+    private WebView webView;
+    private AlertDialog alertDialog;
+    private NewsArticle newsArticle;
+    private String urlArticle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article);
-        // intent
-        categoryOfArticle = "business";
-        savedArticle = "testarticle";
+
+        webView = findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebViewClient(new WebViewClient());
+
+        if (getIntent() != null) {
+            newsArticle = (NewsArticle) getIntent().getSerializableExtra("clickedItem");
+            urlArticle = newsArticle.getUrl();
+            webView.loadUrl(urlArticle);
+        }
+
+        categoryOfArticle = newsArticle.getCategories();
+        titleOfArticle = newsArticle.getTitle();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -55,29 +77,25 @@ public class ArticleActivity extends AppCompatActivity implements ArticleLikeReq
             public void onClick(View v) {
 
                 ArticleLikeRequest articleLikeRequest = new ArticleLikeRequest(getApplicationContext());
-                articleLikeRequest.getArticleLike(ArticleActivity.this);
+                articleLikeRequest.getArticleLike(ArticleActivity.this, categoryOfArticle);
 
             }
 
         });
 
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                ArticleSaveRequest articleSaveRequest = new ArticleSaveRequest(getApplicationContext());
-//                articleSaveRequest.getArticleSave(ArticleActivity.this);
-//
-//            }
-//        });
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ArticleSaveRequest articleSaveRequest = new ArticleSaveRequest(getApplicationContext());
+                articleSaveRequest.getArticleSave(ArticleActivity.this);
+
+            }
+        });
 
     }
 
     public void gotArticleLike(float oldScore) {
-        // repeating because of crash ofter pressing floatingbutton
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         newScore = (oldScore + 1);
         databaseReference.child("users").child(userId).child("preferences").child(categoryOfArticle).setValue(newScore);
@@ -89,17 +107,19 @@ public class ArticleActivity extends AppCompatActivity implements ArticleLikeReq
                 Toast.LENGTH_LONG).show();
     }
 
-//    public void gotArticleSave(ArrayList<NewsArticle> savedArticleList) {
-//        NewsArticle newsArticle = new NewsArticle();
-//        newsArticle.setTitle("testing");
-//        savedArticleList.add(newsArticle);
-//        databaseReference.child("users").child(userId).child("preferences").child("").setValue(newScore);
-//
-//    }
-//
-//    public void gotArticleSaveError (String message) {
-//        Toast.makeText(this, message,
-//                Toast.LENGTH_LONG).show();
-//    }
+    public void gotArticleSave(ArrayList<NewsArticle> savedArticleList) {
+        NewsArticle newsArticle = new NewsArticle();
+        newsArticle.setTitle(titleOfArticle);
+        newsArticle.setCategories(categoryOfArticle);
+        newsArticle.setUrl(urlArticle);
+        savedArticleList.add(newsArticle);
+        databaseReference.child("users").child(userId).child("savedArticles").setValue(savedArticleList);
+
+    }
+
+    public void gotArticleSaveError (String message) {
+        Toast.makeText(this, message,
+                Toast.LENGTH_LONG).show();
+    }
 
 }

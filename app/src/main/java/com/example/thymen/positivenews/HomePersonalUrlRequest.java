@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class PersonalFeedUrlRequest {
+public class HomePersonalUrlRequest {
     public Callback activity;
     public Context context;
     private DatabaseReference databaseReference;
@@ -42,7 +42,7 @@ public class PersonalFeedUrlRequest {
         void gotPersonalFeedUrlError(String message);
     }
 
-    public PersonalFeedUrlRequest(Context context) {
+    public HomePersonalUrlRequest(Context context) {
         this.context = context;
     }
 

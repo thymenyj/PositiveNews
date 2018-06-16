@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ProfileSavedArticlesTab extends Fragment {
+public class ProfileSavedArticlesTab extends Fragment  implements ProfileSavedArticlesRequest.Callback {
     private View view;
     private ListView listView;
     private ArrayAdapter<NewsArticle> arrayAdapter;
@@ -37,25 +38,18 @@ public class ProfileSavedArticlesTab extends Fragment {
 
         listView = view.findViewById(R.id.savedArticleListView);
 
-        ValueEventListener postListener = new ValueEventListener() {
+       ProfileSavedArticlesRequest profileSavedArticlesRequest = new ProfileSavedArticlesRequest(getContext());
+       profileSavedArticlesRequest.getProfileSavedArticles(this);
 
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                String userId = user.getUid();
-                savedArticlesList = dataSnapshot.child("users").child(userId).child("savedArticles").getValue(ArrayList.class);
+        return view;
+    }
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("TAG", "something went wrong", databaseError.toException());
-            }
-        };
-        databaseReference.addValueEventListener(postListener);
-
+    public void gotProfileSavedArticles(ArrayList<NewsArticle> savedArticleList) {
         arrayAdapter = new SavedArticlesListLayout(getContext(), R.layout.layout_saved_articles_list, savedArticlesList);
         listView.setAdapter(arrayAdapter);
-        return view;
+    }
+    public void gotProfileSavedArticlesError (String message) {
+        Toast.makeText(getContext(), message,
+                Toast.LENGTH_LONG).show();
     }
 }

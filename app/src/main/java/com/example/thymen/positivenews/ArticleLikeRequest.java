@@ -20,7 +20,7 @@ public class ArticleLikeRequest {
     public Context context;
     private DatabaseReference databaseReference;
     private String userId;
-    private String category;
+    public String categoryOfArticle;
     private float oldScore;
 
 
@@ -33,31 +33,21 @@ public class ArticleLikeRequest {
         this.context = context;
     }
 
-    public void getArticleLike (final Callback activity) {
+    public void getArticleLike (final Callback activity, final String categoryOfArticle) {
         this.activity = activity;
-
+        this.categoryOfArticle = categoryOfArticle;
+//        Log.d("categoryOfArticle", categoryOfArticle);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
         Query updatePreferenceScore =  databaseReference.child("users").child(userId).child("preferences");
         updatePreferenceScore.addListenerForSingleValueEvent(new ValueEventListener() {
-
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Query updatePreferenceScore =  databaseReference.child("users").child(userId).child("preferences");
-                updatePreferenceScore.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot postSnapshot) {
-                        oldScore = postSnapshot.child("business").getValue(Float.class);
+            public void onDataChange(DataSnapshot postSnapshot) {
 
-                        activity.gotArticleLike(oldScore);
-                    }
+                oldScore = postSnapshot.child(categoryOfArticle).getValue(Float.class);
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                activity.gotArticleLike(oldScore);
             }
 
             @Override

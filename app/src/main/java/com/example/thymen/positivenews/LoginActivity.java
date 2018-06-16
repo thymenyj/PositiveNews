@@ -1,12 +1,15 @@
 package com.example.thymen.positivenews;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Logger;
 
@@ -27,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     public TextView loginUsername, loginPassword;
     public FirebaseAuth firebaseAuth;
     public FirebaseAuth.AuthStateListener authStateListener;
+    public FirebaseDatabase firebaseDatabase;
 
     public RelativeLayout rellay1, rellay2;
 
@@ -43,9 +48,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setLogLevel(Logger.Level.DEBUG);
+//
+//        firebaseDatabase = FirebaseDatabase.getInstance();
+//        firebaseDatabase.setLogLevel(Logger.Level.DEBUG);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -89,10 +94,8 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "please enter email and password", Toast.LENGTH_SHORT).show();
                 }
                 else {
-//                    String password = loginPassword.getText().toString();
-//                    String name = loginUsername.getText().toString();
-                    String password = "test123";
-                    String name = "test@gmail.com";
+                    String password = loginPassword.getText().toString();
+                    String name = loginUsername.getText().toString();
                     validate(name, password);
 
                 }
@@ -137,4 +140,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }
