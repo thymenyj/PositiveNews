@@ -1,7 +1,7 @@
 package com.example.thymen.positivenews;
 
 import android.content.Context;
-import android.util.Log;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,47 +17,41 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ProfileSavedArticlesRequest {
+public class ProfileBioRequest {
     public Callback activity;
     public Context context;
     private DatabaseReference databaseReference;
     private String userId;
-    private ArrayList<NewsArticle> savedArticleList;
+    private String name, email;
 
 
     public interface Callback {
-        void gotProfileSavedArticles(ArrayList<NewsArticle> savedArticleList);
-        void gotProfileSavedArticlesError (String message);
+        void gotBio(String name, String email);
+        void gotBioError (String message);
     }
 
-    public ProfileSavedArticlesRequest (Context context) {
+    public ProfileBioRequest(Context context) {
         this.context = context;
     }
 
-    public void getProfileSavedArticles (final Callback activity, final ArrayList<NewsArticle> savedArticleList) {
+    public void getBio (final Callback activity) {
         this.activity = activity;
-        this.savedArticleList = savedArticleList;
         databaseReference = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
-        Query updatePreferenceScore =  databaseReference.child("users").child(userId).child("savedArticles");
+        Query updatePreferenceScore =  databaseReference.child("users").child(userId);
         updatePreferenceScore.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot snapshotSavedArticles: snapshot.getChildren()) {
-                    NewsArticle newsArticle = snapshotSavedArticles.getValue(NewsArticle.class);
-                    savedArticleList.add(newsArticle);
-                    Log.d("counter", "a");
-                }
-
-                Log.d("listSaved", savedArticleList.toString());
-                activity.gotProfileSavedArticles(savedArticleList);
+                name = snapshot.child("name").getValue(String.class);
+                email = snapshot.child("email").getValue(String.class);
+                activity.gotBio(name, email);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 String message = databaseError.getMessage();
-                activity.gotProfileSavedArticlesError(message);
+                activity.gotBioError(message);
             }
 
         });

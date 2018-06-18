@@ -17,47 +17,41 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ProfileSavedArticlesRequest {
+public class ProfilePreferencesRequest {
     public Callback activity;
     public Context context;
     private DatabaseReference databaseReference;
     private String userId;
     private ArrayList<NewsArticle> savedArticleList;
+    private Preferences preferences;
 
 
     public interface Callback {
-        void gotProfileSavedArticles(ArrayList<NewsArticle> savedArticleList);
-        void gotProfileSavedArticlesError (String message);
+        void gotPreferences(Preferences preferences);
+        void gotPreferencesError (String message);
     }
 
-    public ProfileSavedArticlesRequest (Context context) {
+    public ProfilePreferencesRequest(Context context) {
         this.context = context;
     }
 
-    public void getProfileSavedArticles (final Callback activity, final ArrayList<NewsArticle> savedArticleList) {
+    public void getPreferences (final Callback activity) {
         this.activity = activity;
-        this.savedArticleList = savedArticleList;
         databaseReference = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
-        Query updatePreferenceScore =  databaseReference.child("users").child(userId).child("savedArticles");
+        Query updatePreferenceScore =  databaseReference.child("users").child(userId).child("preferences");
         updatePreferenceScore.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot snapshotSavedArticles: snapshot.getChildren()) {
-                    NewsArticle newsArticle = snapshotSavedArticles.getValue(NewsArticle.class);
-                    savedArticleList.add(newsArticle);
-                    Log.d("counter", "a");
-                }
-
-                Log.d("listSaved", savedArticleList.toString());
-                activity.gotProfileSavedArticles(savedArticleList);
+                preferences = snapshot.getValue(Preferences.class);
+                activity.gotPreferences(preferences);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 String message = databaseError.getMessage();
-                activity.gotProfileSavedArticlesError(message);
+                activity.gotPreferencesError(message);
             }
 
         });

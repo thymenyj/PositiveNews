@@ -25,7 +25,7 @@ public class HomeTabAdapter extends FragmentPagerAdapter {
             case 0:
                 return new HomePersonalTab();
             case 1:
-                return new HomeCountryTab();
+                return new HomeCategoriesTab();
             default:
                 return null;
         }

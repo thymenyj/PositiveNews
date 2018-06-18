@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment {
 
         HomeTabAdapter homeTabAdapter = new HomeTabAdapter(getChildFragmentManager());
         homeTabAdapter.addFragment(new HomePersonalTab(), "Personal");
-        homeTabAdapter.addFragment(new HomeCountryTab(), "Country");
+        homeTabAdapter.addFragment(new HomeCategoriesTab(), "Categories");
 
         viewPager.setAdapter(homeTabAdapter);
         tabLayout.setupWithViewPager(viewPager);

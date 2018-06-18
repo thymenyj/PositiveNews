@@ -1,5 +1,6 @@
 package com.example.thymen.positivenews;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -37,9 +39,22 @@ public class ProfileSavedArticlesTab extends Fragment  implements ProfileSavedAr
         view = inflater.inflate(R.layout.tab_profile_saved_articles, container, false);
 
         listView = view.findViewById(R.id.savedArticleListView);
+        savedArticlesList = new ArrayList<>();
 
        ProfileSavedArticlesRequest profileSavedArticlesRequest = new ProfileSavedArticlesRequest(getContext());
-       profileSavedArticlesRequest.getProfileSavedArticles(this);
+       profileSavedArticlesRequest.getProfileSavedArticles(this, savedArticlesList);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                NewsArticle clickedItem = (NewsArticle) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(getActivity(), ArticleActivity.class);
+                intent.putExtra("clickedItem", clickedItem);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
@@ -48,6 +63,7 @@ public class ProfileSavedArticlesTab extends Fragment  implements ProfileSavedAr
         arrayAdapter = new SavedArticlesListLayout(getContext(), R.layout.layout_saved_articles_list, savedArticlesList);
         listView.setAdapter(arrayAdapter);
     }
+
     public void gotProfileSavedArticlesError (String message) {
         Toast.makeText(getContext(), message,
                 Toast.LENGTH_LONG).show();

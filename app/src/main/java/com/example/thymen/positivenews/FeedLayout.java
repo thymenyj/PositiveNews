@@ -29,25 +29,6 @@ public class FeedLayout extends ArrayAdapter<NewsArticle> {
         TextView item = convertView.findViewById(R.id.titleItem);
 
         item.setText(object.getTitle());
-//        String categoryPicture = object.getCategories();
-//        if (categoryPicture == "business") {
-//            item.setBackgroundResource(R.drawable.background_business);
-//        }
-//        else if (categoryPicture == "entertainment") {
-//            item.setBackgroundResource(R.drawable.background_entertainment);
-//        }
-//        else if (categoryPicture == "health") {
-//            item.setBackgroundResource(R.drawable.background_health);
-//        }
-//        else if (categoryPicture == "science") {
-//            item.setBackgroundResource(R.drawable.background_science);
-//        }
-//        else if (categoryPicture == "sports") {
-//            item.setBackgroundResource(R.drawable.background_sports);
-//        }
-//        else if (categoryPicture == "technology") {
-//            item.setBackgroundResource(R.drawable.background_technology);
-//        }
 
         return convertView;
     }

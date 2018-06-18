@@ -25,7 +25,7 @@ public class SavedArticlesListLayout extends ArrayAdapter<NewsArticle> {
     private DatabaseReference databaseReference;
     private ArrayList<NewsArticle> savedArticlesList;
     private String titleSavedArticle;
-    private TextView titleSavedArticleTextview;
+    private TextView titleSavedArticleTextView;
 
     @NonNull
     @Override
@@ -36,7 +36,8 @@ public class SavedArticlesListLayout extends ArrayAdapter<NewsArticle> {
         }
         titleSavedArticle = object.getTitle().toString();
 
-        titleSavedArticleTextview.setText(titleSavedArticle);
+        titleSavedArticleTextView = convertView.findViewById(R.id.titleSavedArticle);
+        titleSavedArticleTextView.setText(titleSavedArticle);
 
         return convertView;
     }

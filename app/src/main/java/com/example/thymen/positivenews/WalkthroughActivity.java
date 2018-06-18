@@ -148,13 +148,14 @@ public class WalkthroughActivity extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             String userId = user.getUid();
-                            database.child("users").child(userId).child("preferences").child("business").setValue(business);
-                            database.child("users").child(userId).child("preferences").child("entertainment").setValue(entertainment);
-                            database.child("users").child(userId).child("preferences").child("health").setValue(health);
-                            database.child("users").child(userId).child("preferences").child("science").setValue(science);
-                            database.child("users").child(userId).child("preferences").child("sports").setValue(sports);
-                            database.child("users").child(userId).child("preferences").child("technology").setValue(technology);
-
+                            Preferences preferences = new Preferences();
+                            preferences.setBusiness(business);
+                            preferences.setEntertainment(entertainment);
+                            preferences.setHealth(health);
+                            preferences.setScience(science);
+                            preferences.setSports(sports);
+                            preferences.setTechnology(technology);
+                            database.child("users").child(userId).child("preferences").setValue(preferences);
                         }
 
                         @Override
