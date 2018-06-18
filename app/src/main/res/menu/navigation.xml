@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_trending"
-        android:icon="@drawable/icon_trending"
-        android:title="Trending"/>
+        android:icon="@drawable/icon_channel"
+        android:title="Channels"/>
 
 </menu>
