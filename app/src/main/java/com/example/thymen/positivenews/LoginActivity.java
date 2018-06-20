@@ -26,12 +26,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Logger;
 
-public class LoginActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class LoginActivity extends AppCompatActivity implements PositiveWordsRequest.Callback {
     public Button loginLogin, loginRegister, loginReset;
     public TextView loginUsername, loginPassword;
     public FirebaseAuth firebaseAuth;
     public FirebaseAuth.AuthStateListener authStateListener;
     public FirebaseDatabase firebaseDatabase;
+    private HashMap<String, String> updateHashmap;
+
 
     public RelativeLayout rellay1, rellay2;
 
@@ -48,6 +58,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        HashMap<String, String> initHashMap = new HashMap<>();
+        ((MyApplication) this.getApplication()).setPositiveWords(initHashMap);
+
+        PositiveWordsRequest positiveWordsRequest = new PositiveWordsRequest(this);
+        positiveWordsRequest.getPositiveWords(this);
+
+
 //
 //        firebaseDatabase = FirebaseDatabase.getInstance();
 //        firebaseDatabase.setLogLevel(Logger.Level.DEBUG);
@@ -139,6 +157,22 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void gotPositiveWords(String positiveWords) {
+        ArrayList<String> list = new ArrayList<>(Arrays.asList(positiveWords.split(", ")));
+        updateHashmap = ((MyApplication) this.getApplication()).getPositiveWords();
+        for (int i = 0; i < list.size(); i++) {
+            String word = list.get(i);
+            updateHashmap.put(word, word);
+        }
+        Log.d("initHashMap", updateHashmap.toString());
+        ((MyApplication) this.getApplication()).setPositiveWords(updateHashmap);
+    }
+
+    public void gotPositiveWordsError(String message) {
+        Toast.makeText(this, message,
+                Toast.LENGTH_LONG).show();
     }
 
 }
