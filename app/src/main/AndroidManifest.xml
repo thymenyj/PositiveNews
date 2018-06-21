@@ -25,8 +25,9 @@
         <activity android:name=".ProfileFragment" />
         <activity android:name=".HomePersonalTab" />
         <activity android:name=".ArticleActivity" />
-        <activity android:name=".TrendingFeedFragment" />
+        <activity android:name=".SourcesFragment" />
         <activity android:name=".WalkthroughActivity" />
+        <activity android:name=".SourcesFeed"></activity>
     </application>
 
 </manifest>

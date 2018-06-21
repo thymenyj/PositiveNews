@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,7 +22,8 @@ public class HomePersonalTab extends Fragment implements HomePersonalRequest.Cal
     public ListView personalListView;
     private HashMap<String, String> hashMap;
     private ArrayList<NewsArticle> personalNewsArticlesList;
-    private ArrayList<Integer> lengthsList;
+    private ArrayList<NewsArticle> preFinalList;
+    private ArrayList<String> titleList;
 
     @Nullable
     @Override
@@ -29,7 +31,8 @@ public class HomePersonalTab extends Fragment implements HomePersonalRequest.Cal
         View view = inflater.inflate(R.layout.fragment_personal_feed, container, false);
         Log.d("startPersonal", "Start");
         personalListView = view.findViewById(R.id.personalListView);
-        lengthsList = new ArrayList<>();
+        preFinalList = new ArrayList<>();
+        titleList = new ArrayList<>();
 
         hashMap = ((MyApplication) getActivity().getApplication()).getPositiveWords();
 
@@ -53,10 +56,10 @@ public class HomePersonalTab extends Fragment implements HomePersonalRequest.Cal
         return view;
     }
 
-    public void gotPersonalFeed(ArrayList<NewsArticle> personalFeed, int lengthTempList) {
-        personalNewsArticlesList.addAll(personalFeed);
+    public void gotPersonalFeed(ArrayList<NewsArticle> personalFeed, ArrayList<Integer> lengthsList) {
+        this.personalNewsArticlesList = personalFeed;
         Log.d("personalListArticles", personalNewsArticlesList.toString());
-        lengthsList.add(lengthTempList);
+
         HomePersonalIndexRequest homePersonalIndexRequest = new HomePersonalIndexRequest(getContext());
         homePersonalIndexRequest.getPersonalIndex(this, lengthsList);
     }
@@ -67,12 +70,19 @@ public class HomePersonalTab extends Fragment implements HomePersonalRequest.Cal
     }
 
     public void gotPersonalIndex(ArrayList<Integer> indexList) {
+
         Log.d("indexList", indexList.toString());
-        Log.d("personalNewsList", personalNewsArticlesList.toString());
         ArrayList<NewsArticle> finalList = new ArrayList<>();
+
+        Log.d("preFinal", preFinalList.toString());
+
         for (int i = 0; i < indexList.size(); i++) {
-            finalList.add(personalNewsArticlesList.get(i));
+            int index = indexList.get(i);
+            finalList.add(personalNewsArticlesList.get(index));
         }
+
+        Log.d("finalList", finalList.toString());
+
         ArrayAdapter<NewsArticle> adapter = new FeedLayout(getContext(), R.layout.layout_feed, finalList);
         personalListView.setAdapter(adapter);
     }
@@ -81,6 +91,7 @@ public class HomePersonalTab extends Fragment implements HomePersonalRequest.Cal
         Toast.makeText(getContext(), message,
                 Toast.LENGTH_LONG).show();
     }
+
 
 
 }

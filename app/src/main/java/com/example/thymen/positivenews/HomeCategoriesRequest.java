@@ -60,14 +60,14 @@ public class HomeCategoriesRequest implements Response.Listener<JSONObject>, Res
                 String image = item.getString("urlToImage");
                 String url = item.getString("url");
                 String description = item.getString("description");
-                if (image != null) {
-                    newsArticle.setTitle(title);
-                    newsArticle.setImage(image);
-                    newsArticle.setUrl(url);
-                    newsArticle.setBody(description);
-                    newsArticle.setCategories(category);
-                    categoriesFeed.add(newsArticle);
-                }
+
+                newsArticle.setTitle(title);
+                newsArticle.setImage(image);
+                newsArticle.setUrl(url);
+                newsArticle.setBody(description);
+                newsArticle.setCategories(category);
+                categoriesFeed.add(newsArticle);
+
             }
             Log.d("categoriesFeed", categoriesFeed.toString());
             activity.gotCategoriesFeed(categoriesFeed);

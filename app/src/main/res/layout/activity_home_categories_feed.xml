@@ -7,7 +7,9 @@
     <ListView
         android:id="@+id/categoryListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:dividerHeight="8dp"
+        android:divider="@null"/>
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/categoryButton"
@@ -29,7 +31,7 @@
             android:layout_marginBottom="50dp"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
-            app:fab_icon="@drawable/icon_login"
+            app:fab_icon="@drawable/icon_business"
             app:fab_size="mini" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -41,7 +43,7 @@
             android:layout_marginBottom="60dp"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
-            app:fab_icon="@drawable/icon_login"
+            app:fab_icon="@drawable/icon_entertainment"
             app:fab_size="mini" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -53,7 +55,7 @@
             android:layout_marginBottom="60dp"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
-            app:fab_icon="@drawable/icon_login"
+            app:fab_icon="@drawable/icon_health"
             app:fab_size="mini" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -65,7 +67,7 @@
             android:layout_marginBottom="60dp"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
-            app:fab_icon="@drawable/icon_login"
+            app:fab_icon="@drawable/icon_science"
             app:fab_size="mini" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -77,7 +79,7 @@
             android:layout_marginBottom="60dp"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
-            app:fab_icon="@drawable/icon_login"
+            app:fab_icon="@drawable/icon_sports"
             app:fab_size="mini" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -89,7 +91,7 @@
             android:layout_marginBottom="60dp"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
-            app:fab_icon="@drawable/icon_login"
+            app:fab_icon="@drawable/icon_technology"
             app:fab_size="mini" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>

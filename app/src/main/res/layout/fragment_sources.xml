@@ -3,9 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <ListView
-        android:id="@+id/personalListView"
+        android:id="@+id/sourcesListview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"
-        android:dividerHeight="8dp"/>
+        android:layout_height="match_parent" />
 </RelativeLayout>
