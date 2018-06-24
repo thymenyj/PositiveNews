@@ -155,6 +155,7 @@ public class WalkthroughActivity extends AppCompatActivity {
                             preferences.setScience(science);
                             preferences.setSports(sports);
                             preferences.setTechnology(technology);
+                            preferences.setGeneral(1);
                             database.child("users").child(userId).child("preferences").setValue(preferences);
                         }
 

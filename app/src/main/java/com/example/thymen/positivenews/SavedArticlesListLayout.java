@@ -36,7 +36,7 @@ public class SavedArticlesListLayout extends ArrayAdapter<NewsArticle> {
         }
         titleSavedArticle = object.getTitle().toString();
 
-        titleSavedArticleTextView = convertView.findViewById(R.id.titleSavedArticle);
+        titleSavedArticleTextView = convertView.findViewById(R.id.titleItem);
         titleSavedArticleTextView.setText(titleSavedArticle);
 
         return convertView;

@@ -51,14 +51,18 @@ public class SourcesFeedRequest implements Response.Listener<JSONObject>, Respon
                 NewsArticle newsArticle = new NewsArticle();
                 JSONObject item = array.getJSONObject(i);
                 String title = item.getString("title");
+                String categories = "general";
                 String image = item.getString("urlToImage");
                 String url = item.getString("url");
                 String description = item.getString("description");
+                String date = item.getString("publishedAt");
 
                 newsArticle.setTitle(title);
+                newsArticle.setCategories(categories);
                 newsArticle.setImage(image);
                 newsArticle.setUrl(url);
                 newsArticle.setBody(description);
+                newsArticle.setDate(date);
                 sourcesFeed.add(newsArticle);
 
             }

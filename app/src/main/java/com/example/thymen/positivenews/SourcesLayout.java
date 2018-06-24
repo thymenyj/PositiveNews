@@ -26,7 +26,7 @@ public class SourcesLayout extends ArrayAdapter<NewsSource> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_sources, parent, false);
         }
-        TextView item = convertView.findViewById(R.id.titleItem);
+        TextView item = convertView.findViewById(R.id.titleSource);
 
         item.setText(object.getName());
 

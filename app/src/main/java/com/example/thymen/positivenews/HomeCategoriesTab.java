@@ -17,18 +17,21 @@ import android.widget.Toast;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest.Callback {
     public ListView categoriesListView;
     private String category;
     private FloatingActionButton categoryBusiness, categoryEntertainment, categoryHealth, categoryScience, categorySports, categoryTechnology;
-
+    private HashMap<String, String> hashMap;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_home_categories_feed, container, false);
+
+        hashMap = ((MyApplication) getActivity().getApplication()).getPositiveWords();
 
         categoriesListView = view.findViewById(R.id.categoryListView);
         categoryBusiness = view.findViewById(R.id.categoryBusiness);
@@ -55,7 +58,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             public void onClick(View v) {
                 category = "business";
                 HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category);
+                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
             }
         });
 
@@ -64,7 +67,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             public void onClick(View v) {
                 category = "entertainment";
                 HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category);
+                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
             }
         });
 
@@ -73,7 +76,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             public void onClick(View v) {
                 category = "health";
                 HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category);
+                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
             }
         });
 
@@ -82,7 +85,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             public void onClick(View v) {
                 category = "science";
                 HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category);
+                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
             }
         });
 
@@ -91,7 +94,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             public void onClick(View v) {
                 category = "sports";
                 HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category);
+                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
             }
         });
 
@@ -100,7 +103,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             public void onClick(View v) {
                 category = "technology";
                 HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category);
+                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
             }
         });
 

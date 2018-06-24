@@ -46,7 +46,7 @@ public class ArticleLikeRequest {
             public void onDataChange(DataSnapshot postSnapshot) {
 
                 oldScore = postSnapshot.child(categoryOfArticle).getValue(Float.class);
-
+                Log.d("oldScoreArticle", Float.toString(oldScore));
                 activity.gotArticleLike(oldScore);
             }
 

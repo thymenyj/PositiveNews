@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HomeCategoriesRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
     public Callback activity;
@@ -24,6 +25,7 @@ public class HomeCategoriesRequest implements Response.Listener<JSONObject>, Res
     private String url;
     private String category;
     private ArrayList<NewsArticle> categoriesFeed;
+    HashMap<String, String> hashMap;
 
     public interface Callback {
         void gotCategoriesFeed(ArrayList<NewsArticle> menu);
@@ -34,10 +36,11 @@ public class HomeCategoriesRequest implements Response.Listener<JSONObject>, Res
         this.context = context;
     }
 
-    public void getCategoriesFeed(Callback activity, String category) {
+    public void getCategoriesFeed(Callback activity, String category, HashMap<String, String> hashMap) {
         this.activity = activity;
         this.category = category;
         this.categoriesFeed = categoriesFeed;
+        this.hashMap = hashMap;
 
         url = "https://newsapi.org/v2/top-headlines?category=" + category + "&country=us&apiKey=95523811729048518c1cf1c3da766379";
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -60,14 +63,19 @@ public class HomeCategoriesRequest implements Response.Listener<JSONObject>, Res
                 String image = item.getString("urlToImage");
                 String url = item.getString("url");
                 String description = item.getString("description");
+                String date = item.getString("publishedAt");
+                if (checkPositivity(title)) {
+                    newsArticle.setTitle(title);
+                    newsArticle.setImage(image);
+                    newsArticle.setUrl(url);
+                    newsArticle.setBody(description);
+                    newsArticle.setCategories(date);
+                    newsArticle.setCategories(category);
+                    if (image != null) {
+                        categoriesFeed.add(newsArticle);
+                    }
 
-                newsArticle.setTitle(title);
-                newsArticle.setImage(image);
-                newsArticle.setUrl(url);
-                newsArticle.setBody(description);
-                newsArticle.setCategories(category);
-                categoriesFeed.add(newsArticle);
-
+                }
             }
             Log.d("categoriesFeed", categoriesFeed.toString());
             activity.gotCategoriesFeed(categoriesFeed);
@@ -80,6 +88,25 @@ public class HomeCategoriesRequest implements Response.Listener<JSONObject>, Res
     public void onErrorResponse(VolleyError error) {
         String message = error.getMessage();
         activity.gotCategoriesFeedError(message);
+    }
+
+    public Boolean checkPositivity(String titleArticle) {
+        int scorePositivity = 0;
+
+        String[] arr = titleArticle.split("\\s*(=>|,|\\s)\\s*");
+        for ( String wordString : arr) {
+            String word = hashMap.get(wordString);
+            if (word != null) {
+                scorePositivity = scorePositivity + 1;
+            }
+        }
+        Log.d("scorePOsCheck", Float.toString(scorePositivity));
+        if (scorePositivity > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 }

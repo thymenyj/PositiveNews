@@ -13,11 +13,15 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class FeedLayout extends ArrayAdapter<NewsArticle> {
 
     private ArrayList<NewsArticle> item;
+    TextView titleItem, dateItem;
+    ImageView imageItem;
 
     @NonNull
     @Override
@@ -26,9 +30,13 @@ public class FeedLayout extends ArrayAdapter<NewsArticle> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_feed, parent, false);
         }
-        TextView item = convertView.findViewById(R.id.titleItem);
+        titleItem = convertView.findViewById(R.id.titleItem);
+        dateItem = convertView.findViewById(R.id.dateItem);
+        imageItem =  convertView.findViewById(R.id.imageItem);
 
-        item.setText(object.getTitle());
+        titleItem.setText(object.getTitle());
+        dateItem.setText(object.getDate());
+        Picasso.with(getContext()).load(object.getImage()).into(imageItem);
 
         return convertView;
     }

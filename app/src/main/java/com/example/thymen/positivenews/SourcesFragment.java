@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -16,19 +17,19 @@ import java.util.ArrayList;
 
 
 public class SourcesFragment extends Fragment implements SourcesRequest.Callback{
-    public ListView sourcesListView;
+    public GridView sourcesGridView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sources, container, false);
 
-        sourcesListView = view.findViewById(R.id.sourcesListview);
+        sourcesGridView= view.findViewById(R.id.sourcesListview);
 
         SourcesRequest sourcesRequest = new SourcesRequest(getContext());
         sourcesRequest.getSources(this);
 
-        sourcesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        sourcesGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -45,7 +46,7 @@ public class SourcesFragment extends Fragment implements SourcesRequest.Callback
 
     public void gotSources(ArrayList<NewsSource> sources) {
         ArrayAdapter<NewsSource> adapter = new SourcesLayout(getContext(), R.layout.layout_sources, sources);
-        sourcesListView.setAdapter(adapter);
+        sourcesGridView.setAdapter(adapter);
     }
 
     public void gotSourcesError(String message) {

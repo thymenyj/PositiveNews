@@ -7,6 +7,7 @@ public class Preferences {
     float science;
     float sports;
     float technology;
+    float general;
 
 
     public float getBusiness() {
@@ -55,6 +56,14 @@ public class Preferences {
 
     public void setTechnology(float technology) {
         this.technology = technology;
+    }
+
+    public float getGeneral() {
+        return general;
+    }
+
+    public void setGeneral(float general) {
+        this.general = general;
     }
 
 }
