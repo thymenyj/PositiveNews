@@ -6,21 +6,16 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:src="@drawable/icon_mirror" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Personalisation"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:text="We would love to get your preferences, so we can make your experiences better "
         android:textAlignment="center"
         android:textColor="@color/grey"
         android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textStyle="italic" />
 
 
 </LinearLayout>

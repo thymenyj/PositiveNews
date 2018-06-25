@@ -31,11 +31,9 @@ public class FeedLayout extends ArrayAdapter<NewsArticle> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_feed, parent, false);
         }
         titleItem = convertView.findViewById(R.id.titleItem);
-        dateItem = convertView.findViewById(R.id.dateItem);
         imageItem =  convertView.findViewById(R.id.imageItem);
 
         titleItem.setText(object.getTitle());
-        dateItem.setText(object.getDate());
         Picasso.with(getContext()).load(object.getImage()).into(imageItem);
 
         return convertView;

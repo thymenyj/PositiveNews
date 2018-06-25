@@ -23,4 +23,9 @@
     <color name="blue_semi_transparent">#805677fc</color>
     <color name="blue_semi_transparent_pressed">#80738ffe</color>
 
+    <color name="base_green">#2ECC71</color>
+    <color name="stroke_green">#1E8449</color>
+    <color name="base_red">#E74C3C</color>
+    <color name="stroke_red">#A93226</color>
+
 </resources>

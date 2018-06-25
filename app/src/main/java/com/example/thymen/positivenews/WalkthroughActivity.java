@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -40,13 +42,14 @@ public class WalkthroughActivity extends AppCompatActivity {
     private WalkthroughSlideAdapter walkthroughSlideAdapter;
     public DatabaseReference database;
 
-    private float business, entertainment, health, science, sports, technology;
+    private float business = 1, entertainment = 1, health = 1, science = 1, sports = 1, technology = 1;
 
-    private Switch businessSwitch, entertainmentSwitch, healthSwitch, scienceSwitch, sportsSwitch, technologySwitch;
+    private TextView welcome;
+    private ImageView businessPhoto, entertainmentPhoto, healthPhoto, sciencePhoto, sportsPhoto, technologyPhoto;
 
     private float startingValue = 100;
 
-    private String firstLogin;
+    private String firstLogin, nameUser;
 
 
     @Override
@@ -61,7 +64,7 @@ public class WalkthroughActivity extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String userId = user.getUid();
                 firstLogin = dataSnapshot.child("users").child(userId).child("firstLogin").getValue().toString();
-
+                nameUser = dataSnapshot.child("users").child(userId).child("name").getValue(String.class);
                 if (firstLogin.equals("false")) {
                     startMainActivity();
                     finish();
@@ -84,6 +87,7 @@ public class WalkthroughActivity extends AppCompatActivity {
         buttonNext = findViewById(R.id.next);
         buttonSkip = findViewById(R.id.skip);
 
+
         //When user press skip, start Main Activity
         buttonSkip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,47 +105,6 @@ public class WalkthroughActivity extends AppCompatActivity {
                     //move to next page
                     viewPager.setCurrentItem(currentPage);
                 } else if (currentPage == layouts.length - 1) {
-                    if (businessSwitch.isChecked()) {
-                        business = startingValue;
-                    }
-                    else {
-                        business = 1;
-                    }
-
-                    if (entertainmentSwitch.isChecked()) {
-                        entertainment = startingValue;
-                    }
-                    else {
-                        entertainment = 1;
-                    }
-
-                    if (healthSwitch.isChecked()) {
-                        health = startingValue;
-                    }
-                    else {
-                        health = 1;
-                    }
-
-                    if (scienceSwitch.isChecked()) {
-                        science = startingValue;
-                    }
-                    else {
-                        science = 1;
-                    }
-
-                    if (sportsSwitch.isChecked()) {
-                        sports = startingValue;
-                    }
-                    else {
-                        sports = 1;
-                    }
-                    if (technologySwitch.isChecked()) {
-                        technology = startingValue;
-                    }
-                    else {
-                        technology = 1;
-                    }
-
                     ValueEventListener postListener = new ValueEventListener() {
 
                         @Override
@@ -192,6 +155,7 @@ public class WalkthroughActivity extends AppCompatActivity {
         walkthroughSlideAdapter = new WalkthroughSlideAdapter(layouts, getApplicationContext());
         viewPager.setAdapter(walkthroughSlideAdapter);
 
+
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -209,12 +173,110 @@ public class WalkthroughActivity extends AppCompatActivity {
                     buttonSkip.setVisibility(View.VISIBLE);
 
                     // instantiate switches
-                    businessSwitch = findViewById(R.id.walkthrough_category_business);
-                    entertainmentSwitch = findViewById(R.id.walkthrough_category_entertainment);
-                    healthSwitch = findViewById(R.id.walkthrough_category_health);
-                    scienceSwitch = findViewById(R.id.walkthrough_category_science);
-                    sportsSwitch = findViewById(R.id.walkthrough_category_sports);
-                    technologySwitch = findViewById(R.id.walkthrough_category_technology);
+                    businessPhoto = findViewById(R.id.business_photo);
+                    entertainmentPhoto = findViewById(R.id.entertainment_photo);
+                    healthPhoto = findViewById(R.id.health_photo);
+                    sciencePhoto = findViewById(R.id.science_photo);
+                    sportsPhoto = findViewById(R.id.sports_photo);
+                    technologyPhoto = findViewById(R.id.technology_photo);
+
+                    businessPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                    entertainmentPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                    healthPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                    sciencePhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                    sportsPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                    technologyPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+
+                    businessPhoto.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (business == 1) {
+                                businessPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                                business = 50;
+                            } else if (business == 50) {
+                                businessPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                                business = 100;
+                            } else if (business == 100) {
+                                businessPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                                business = 1;
+                            }
+                        }
+                    });
+                    entertainmentPhoto.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (entertainment == 1) {
+                                entertainmentPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                                entertainment = 50;
+                            } else if (entertainment == 50) {
+                                entertainmentPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                                entertainment = 100;
+                            } else if (entertainment == 100) {
+                                entertainmentPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                                entertainment = 1;
+                            }
+                        }
+                    });
+                    healthPhoto.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (health == 1) {
+                                healthPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                                health = 50;
+                            } else if (health == 50) {
+                                healthPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                                health = 100;
+                            } else if (health == 100) {
+                                healthPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                                health = 1;
+                            }
+                        }
+                    });
+                    sciencePhoto.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (science == 1) {
+                                sciencePhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                                science = 50;
+                            } else if (science == 50) {
+                                sciencePhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                                science = 100;
+                            } else if (science == 100) {
+                                sciencePhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                                science = 1;
+                            }
+                        }
+                    });
+                    sportsPhoto.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (sports == 1) {
+                                sportsPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                                sports = 50;
+                            } else if (sports == 50) {
+                                sportsPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                                sports = 100;
+                            } else if (sports == 100) {
+                                sportsPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                                sports = 1;
+                            }
+                        }
+                    });
+                    technologyPhoto.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (technology == 1) {
+                                technologyPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                                technology = 50;
+                            } else if (technology == 50) {
+                                technologyPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                                technology = 100;
+                            } else if (technology == 100) {
+                                technologyPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                                technology = 1;
+                            }
+                        }
+                    });
                 }
                 else {
                     buttonNext.setText("NEXT");

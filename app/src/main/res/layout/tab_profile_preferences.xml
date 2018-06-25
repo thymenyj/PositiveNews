@@ -11,34 +11,53 @@
         android:gravity="center"
         android:orientation="vertical">
 
-
         <TextView
             android:id="@+id/preferences_category_business"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Business"
-            android:textSize="20dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
+            android:textStyle="italic"
+            android:textSize="20dp"
+            android:layout_marginTop="16dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/business_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
+                android:background="@drawable/round_button_minus"
+                android:text="-"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="100dp"/>
             <TextView
                 android:id="@+id/business_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="TextView" />
+                android:text="score"
+                android:textSize="20dp"
+                android:textStyle="normal"
+                android:layout_centerHorizontal="true"/>
             <Button
                 android:id="@+id/business_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
-        </LinearLayout>
+                android:background="@drawable/round_button_plus"
+                android:text="+"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="100dp"/>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/preferences_category_entertainment"
@@ -46,27 +65,45 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Entertainment"
-            android:textSize="20dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:layout_marginTop="16dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/entertainment_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
+                android:background="@drawable/round_button_minus"
+                android:text="-"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="100dp"/>
             <TextView
                 android:id="@+id/entertainment_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="TextView" />
+                android:text="score"
+                android:textSize="20dp"
+                android:textStyle="normal"
+                android:layout_centerHorizontal="true"/>
             <Button
                 android:id="@+id/entertainment_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
-        </LinearLayout>
+                android:background="@drawable/round_button_plus"
+                android:text="+"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="100dp"/>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/preferences_category_health"
@@ -74,27 +111,45 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Health"
-            android:textSize="20dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:layout_marginTop="16dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/health_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
+                android:background="@drawable/round_button_minus"
+                android:text="-"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="100dp"/>
             <TextView
                 android:id="@+id/health_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="TextView" />
+                android:text="score"
+                android:textSize="20dp"
+                android:textStyle="normal"
+                android:layout_centerHorizontal="true"/>
             <Button
                 android:id="@+id/health_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
-        </LinearLayout>
+                android:background="@drawable/round_button_plus"
+                android:text="+"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="100dp"/>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/preferences_category_science"
@@ -102,27 +157,45 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Science"
-            android:textSize="20dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:layout_marginTop="16dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/science_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
+                android:background="@drawable/round_button_minus"
+                android:text="-"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="100dp"/>
             <TextView
                 android:id="@+id/science_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="TextView" />
+                android:text="score"
+                android:textSize="20dp"
+                android:textStyle="normal"
+                android:layout_centerHorizontal="true"/>
             <Button
                 android:id="@+id/science_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
-        </LinearLayout>
+                android:background="@drawable/round_button_plus"
+                android:text="+"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="100dp"/>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/preferences_category_sports"
@@ -130,27 +203,49 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Sports"
-            android:textSize="20dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:layout_marginTop="16dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/sports_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="100dp"
+                android:background="@drawable/round_button_minus"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:text="-"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/sports_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="TextView" />
+                android:layout_centerHorizontal="true"
+                android:text="score"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+
             <Button
                 android:id="@+id/sports_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
-        </LinearLayout>
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="100dp"
+                android:background="@drawable/round_button_plus"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:text="+"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/preferences_category_technology"
@@ -158,34 +253,54 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Technology"
-            android:textSize="20dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:layout_marginTop="16dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/technology_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
+                android:background="@drawable/round_button_minus"
+                android:text="-"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="100dp"/>
             <TextView
                 android:id="@+id/technology_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="TextView" />
+                android:text="score"
+                android:textSize="20dp"
+                android:textStyle="normal"
+                android:layout_centerHorizontal="true"/>
             <Button
                 android:id="@+id/technology_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="0dp"/>
-        </LinearLayout>
+                android:background="@drawable/round_button_plus"
+                android:text="+"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="100dp"/>
+        </RelativeLayout>
 
         <Button
             android:id="@+id/savePreferences"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Save" />
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="40dp"
+            android:text="Save"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/white_pressed"/>
 
     </LinearLayout>
 
