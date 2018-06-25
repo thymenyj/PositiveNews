@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.ProfileFragment"
     android:orientation="vertical"
-    android:background="@drawable/login_background">
+    android:background="@drawable/background_profile">
 
     <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
