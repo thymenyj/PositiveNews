@@ -18,7 +18,7 @@
         android:layout_marginRight="8dp"
         android:scaleType="fitCenter"
         android:src="@drawable/icon_saved_article"
-        android:tint="@color/mint"/>
+        android:tint="@color/black_semi_transparent"/>
 
     <!--<android.support.v4.widget.NestedScrollView-->
     <!--android:layout_height="match_parent"-->

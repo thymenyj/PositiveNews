@@ -32,7 +32,7 @@
                 android:background="@drawable/round_button_minus"
                 android:text="-"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:minHeight="20dp"
                 android:minWidth="20dp"
                 android:layout_alignParentLeft="true"
@@ -52,7 +52,7 @@
                 android:background="@drawable/round_button_plus"
                 android:text="+"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:minHeight="20dp"
                 android:minWidth="20dp"
                 android:layout_alignParentRight="true"
@@ -78,7 +78,7 @@
                 android:background="@drawable/round_button_minus"
                 android:text="-"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:minHeight="20dp"
                 android:minWidth="20dp"
                 android:layout_alignParentLeft="true"
@@ -98,7 +98,7 @@
                 android:background="@drawable/round_button_plus"
                 android:text="+"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:minHeight="20dp"
                 android:minWidth="20dp"
                 android:layout_alignParentRight="true"
@@ -124,7 +124,7 @@
                 android:background="@drawable/round_button_minus"
                 android:text="-"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:minHeight="20dp"
                 android:minWidth="20dp"
                 android:layout_alignParentLeft="true"
@@ -144,7 +144,7 @@
                 android:background="@drawable/round_button_plus"
                 android:text="+"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:minHeight="20dp"
                 android:minWidth="20dp"
                 android:layout_alignParentRight="true"
@@ -170,7 +170,7 @@
                 android:background="@drawable/round_button_minus"
                 android:text="-"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:minHeight="20dp"
                 android:minWidth="20dp"
                 android:layout_alignParentLeft="true"
@@ -190,7 +190,7 @@
                 android:background="@drawable/round_button_plus"
                 android:text="+"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:minHeight="20dp"
                 android:minWidth="20dp"
                 android:layout_alignParentRight="true"
@@ -222,7 +222,7 @@
                 android:minWidth="20dp"
                 android:text="-"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/sports_score"
@@ -244,7 +244,7 @@
                 android:minWidth="20dp"
                 android:text="+"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
         </RelativeLayout>
 
         <TextView
@@ -266,7 +266,7 @@
                 android:background="@drawable/round_button_minus"
                 android:text="-"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:minHeight="20dp"
                 android:minWidth="20dp"
                 android:layout_alignParentLeft="true"
@@ -286,7 +286,7 @@
                 android:background="@drawable/round_button_plus"
                 android:text="+"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:minHeight="20dp"
                 android:minWidth="20dp"
                 android:layout_alignParentRight="true"
