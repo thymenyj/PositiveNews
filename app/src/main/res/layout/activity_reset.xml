@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@drawable/login_background"
-    tools:context=".ResetActivity">
+    tools:context=".Activity.ResetActivity">
 
     <RelativeLayout
         android:layout_width="wrap_content"
