@@ -8,28 +8,24 @@
     android:padding="8dp"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="120dp">
 
     <ImageView
         android:id="@+id/imageItem"
-        android:layout_width="59dp"
-        android:layout_height="121dp"
+        android:layout_width="55dp"
+        android:layout_height="110dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:scaleType="fitCenter"
         android:src="@drawable/icon_saved_article"
-        android:tint="@color/black_semi_transparent"/>
+        android:tint="@color/grey"/>
 
-    <!--<android.support.v4.widget.NestedScrollView-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_width="match_parent">-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="8dp"
         android:orientation="vertical">
-
 
         <TextView
             android:id="@+id/titleItem"

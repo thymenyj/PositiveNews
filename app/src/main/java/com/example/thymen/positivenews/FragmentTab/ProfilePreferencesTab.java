@@ -178,6 +178,7 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
                 preferences.setScience(Float.parseFloat(science_score.getText().toString()));
                 preferences.setSports(Float.parseFloat(sports_score.getText().toString()));
                 preferences.setTechnology(Float.parseFloat(technology_score.getText().toString()));
+                preferences.setGeneral(1);
                 databaseReference = FirebaseDatabase.getInstance().getReference();
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 userId = user.getUid();

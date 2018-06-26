@@ -39,7 +39,7 @@
                         android:fontFamily="sans-serif-light"
                         android:text="Email For Reset"
                         android:textAllCaps="true"
-                        android:textColor="@color/red"
+                        android:textColor="@color/black_semi_transparent"
                         android:textSize="15sp" />
 
                     <EditText
@@ -51,7 +51,7 @@
                         android:fontFamily="sans-serif-light"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:textColor="@color/red"
+                        android:textColor="@color/black_semi_transparent"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -71,7 +71,7 @@
                 android:paddingRight="70dp"
                 android:text="Reset Password Now"
                 android:textAllCaps="false"
-                android:textColor="@color/red"
+                android:textColor="@color/black_semi_transparent"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -95,7 +95,7 @@
             android:fontFamily="sans-serif"
             android:text="Remembered Password Again?"
             android:textAllCaps="true"
-            android:textColor="@color/red" />
+            android:textColor="@color/black_semi_transparent" />
 
     </RelativeLayout>
 

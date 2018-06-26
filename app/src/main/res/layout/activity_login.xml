@@ -30,16 +30,6 @@
             android:layout_below="@+id/imgView_logo"
             android:visibility="gone">
 
-            <!--<TextView-->
-                <!--android:id="@+id/loginTitle"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:fontFamily="sans-serif-medium"-->
-                <!--android:text="Login"-->
-                <!--android:textColor="@color/red"-->
-                <!--android:textSize="30sp" />-->
-
             <LinearLayout
                 android:id="@+id/linlay1"
                 android:layout_width="match_parent"
@@ -59,7 +49,7 @@
                         android:fontFamily="sans-serif-light"
                         android:text="Username"
                         android:textAllCaps="true"
-                        android:textColor="@color/red"
+                        android:textColor="@color/black_semi_transparent"
                         android:textSize="15sp" />
 
                     <EditText
@@ -71,7 +61,7 @@
                         android:fontFamily="sans-serif-light"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:textColor="@color/red"
+                        android:textColor="@color/black_semi_transparent"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -88,7 +78,7 @@
                         android:fontFamily="sans-serif-light"
                         android:text="Password"
                         android:textAllCaps="true"
-                        android:textColor="@color/red"
+                        android:textColor="@color/black_semi_transparent"
                         android:textSize="15sp" />
 
                     <EditText
@@ -100,7 +90,7 @@
                         android:fontFamily="sans-serif-light"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:textColor="@color/red"
+                        android:textColor="@color/black_semi_transparent"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -120,7 +110,7 @@
                 android:paddingRight="70dp"
                 android:text="Login Now"
                 android:textAllCaps="false"
-                android:textColor="@color/red"
+                android:textColor="@color/black_semi_transparent"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -144,7 +134,7 @@
             android:fontFamily="sans-serif"
             android:text="Signup Now"
             android:textAllCaps="true"
-            android:textColor="@color/red" />
+            android:textColor="@color/black_semi_transparent" />
 
         <Button
             android:id="@+id/loginReset"
@@ -155,7 +145,7 @@
             android:fontFamily="sans-serif"
             android:text="Forgot Password?"
             android:textAllCaps="true"
-            android:textColor="@color/red" />
+            android:textColor="@color/black_semi_transparent" />
 
     </RelativeLayout>
 
