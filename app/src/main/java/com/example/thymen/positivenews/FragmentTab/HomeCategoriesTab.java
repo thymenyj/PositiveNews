@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.thymen.positivenews.Activity.ArticleActivity;
@@ -36,15 +37,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_home_categories_feed, container, false);
 
-        hashMap = ((MyApplication) getActivity().getApplication()).getPositiveWords();
-
-        categoriesListView = view.findViewById(R.id.categoryListView);
-        categoryBusiness = view.findViewById(R.id.categoryBusiness);
-        categoryEntertainment = view.findViewById(R.id.categoryEntertainment);
-        categoryHealth = view.findViewById(R.id.categoryHealth);
-        categoryScience = view.findViewById(R.id.categoryScience);
-        categorySports = view.findViewById(R.id.categorySports);
-        categoryTechnology = view.findViewById(R.id.categoryTechnology);
+        initializeVariables(view);
 
         categoriesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -61,9 +54,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
         categoryBusiness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                category = "business";
-                HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
+
             }
         });
 
@@ -71,8 +62,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             @Override
             public void onClick(View v) {
                 category = "entertainment";
-                HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
+                showCategoryFeed(category);
             }
         });
 
@@ -80,8 +70,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             @Override
             public void onClick(View v) {
                 category = "health";
-                HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
+                showCategoryFeed(category);
             }
         });
 
@@ -89,8 +78,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             @Override
             public void onClick(View v) {
                 category = "science";
-                HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
+                showCategoryFeed(category);
             }
         });
 
@@ -98,8 +86,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             @Override
             public void onClick(View v) {
                 category = "sports";
-                HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
+                showCategoryFeed(category);
             }
         });
 
@@ -107,12 +94,9 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             @Override
             public void onClick(View v) {
                 category = "technology";
-                HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-                homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
+                showCategoryFeed(category);
             }
         });
-
-
         return view;
     }
 
@@ -125,4 +109,23 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
         Toast.makeText(getContext(), message,
         Toast.LENGTH_LONG).show();
     }
+
+
+    public void showCategoryFeed(String category) {
+        HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
+        homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
+    }
+
+    public void initializeVariables(View view) {
+        hashMap = ((MyApplication) getActivity().getApplication()).getPositiveWords();
+
+        categoriesListView = view.findViewById(R.id.categoryListView);
+        categoryBusiness = view.findViewById(R.id.categoryBusiness);
+        categoryEntertainment = view.findViewById(R.id.categoryEntertainment);
+        categoryHealth = view.findViewById(R.id.categoryHealth);
+        categoryScience = view.findViewById(R.id.categoryScience);
+        categorySports = view.findViewById(R.id.categorySports);
+        categoryTechnology = view.findViewById(R.id.categoryTechnology);
+    }
+
 }

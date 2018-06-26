@@ -105,13 +105,6 @@ public class ArticleActivity extends AppCompatActivity implements ArticleLikeReq
         articleSaveRequest.getArticleSave(ArticleActivity.this);
     }
 
-    public void initializeDatabase() {
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        userId = user.getUid();
-    }
-
     public void getArticleContent() {
         WebView webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -125,6 +118,13 @@ public class ArticleActivity extends AppCompatActivity implements ArticleLikeReq
             titleOfArticle = newsArticle.getTitle();
             webView.loadUrl(urlArticle);
         }
+    }
+
+    public void initializeDatabase() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userId = user.getUid();
     }
 
     public void initializeVariables() {

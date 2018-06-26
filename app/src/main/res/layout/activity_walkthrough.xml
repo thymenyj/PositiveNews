@@ -35,7 +35,8 @@
         android:layout_alignParentRight="true"
         android:background="@null"
         android:text="Next"
-        android:textColor="@color/grey" />
+        android:textColor="@color/grey"
+        android:onClick="goToNextSlide"/>
 
     <Button
         android:id="@+id/skip"
@@ -45,5 +46,6 @@
         android:layout_alignParentLeft="true"
         android:background="@null"
         android:text="Skip"
-        android:textColor="@color/grey" />
+        android:textColor="@color/grey"
+        android:onClick="goToHome"/>
 </RelativeLayout>

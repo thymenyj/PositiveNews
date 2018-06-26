@@ -28,14 +28,14 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/business_photo"
+            android:id="@+id/business"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:scaleType="fitXY"
             android:layout_margin="16dp"
+            android:scaleType="fitXY"
             android:src="@drawable/walkthrough_business" />
         <ImageView
-            android:id="@+id/entertainment_photo"
+            android:id="@+id/entertainment"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="fitXY"
@@ -47,14 +47,14 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/health_photo"
+            android:id="@+id/health"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="fitXY"
             android:layout_margin="16dp"
             android:src="@drawable/walkthrough_health" />
         <ImageView
-            android:id="@+id/science_photo"
+            android:id="@+id/science"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="fitXY"
@@ -66,19 +66,20 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/sports_photo"
+            android:id="@+id/sports"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="fitXY"
             android:layout_margin="16dp"
             android:src="@drawable/walkthrough_sports" />
         <ImageView
-            android:id="@+id/technology_photo"
+            android:id="@+id/technology"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="fitXY"
             android:layout_margin="16dp"
-            android:src="@drawable/walkthrough_technology" />
+            android:src="@drawable/walkthrough_technology"
+            android:onClick="updateCategory"/>
     </LinearLayout>
 
 </LinearLayout>

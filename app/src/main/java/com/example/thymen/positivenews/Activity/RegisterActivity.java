@@ -105,9 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
                         database.child("users").child(userId).child("preferences").child("science").setValue(100);
                         database.child("users").child(userId).child("preferences").child("sports").setValue(100);
                         database.child("users").child(userId).child("preferences").child("technology").setValue(100);
-                        database.child("users").child(userId).child("preferences").child("business").setValue(100);
                         database.child("users").child(userId).child("preferences").child("general").setValue(100);
-                        database.child("users").child(userId).child("preferences").child("business").setValue(1);
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
                     } else {

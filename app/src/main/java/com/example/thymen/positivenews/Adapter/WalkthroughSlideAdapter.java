@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WalkthroughSlideAdapter extends PagerAdapter {
-    private LayoutInflater inflater;
     private int[]layouts;
     private Context context;
 
@@ -41,7 +40,7 @@ public class WalkthroughSlideAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(layouts[position], container, false);
         container.addView(view);
 

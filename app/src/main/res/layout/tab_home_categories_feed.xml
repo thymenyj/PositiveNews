@@ -32,7 +32,8 @@
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
             app:fab_icon="@drawable/icon_business"
-            app:fab_size="mini" />
+            app:fab_size="mini"
+            android:onClick="setCategory"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/categoryEntertainment"
@@ -44,7 +45,8 @@
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
             app:fab_icon="@drawable/icon_entertainment"
-            app:fab_size="mini" />
+            app:fab_size="mini"
+            android:onClick="setCategory"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/categoryHealth"
@@ -56,7 +58,8 @@
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
             app:fab_icon="@drawable/icon_health"
-            app:fab_size="mini" />
+            app:fab_size="mini"
+            android:onClick="setCategory"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/categoryScience"
@@ -68,7 +71,8 @@
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
             app:fab_icon="@drawable/icon_science"
-            app:fab_size="mini" />
+            app:fab_size="mini"
+            android:onClick="setCategory"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/categorySports"
@@ -80,7 +84,8 @@
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/grey"
             app:fab_icon="@drawable/icon_sports"
-            app:fab_size="mini" />
+            app:fab_size="mini"
+            android:onClick="setCategory"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/categoryTechnology"

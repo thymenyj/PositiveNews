@@ -21,23 +21,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class ProfileFragment extends Fragment {
-    public DatabaseReference databaseReference;
-    public TextView profileName;
-    public TextView profileEmail;
-    private TabLayout tabLayout;
-    private AppBarLayout appBarLayout;
-    private ViewPager viewPager;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container,false);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        tabLayout = view.findViewById(R.id.profileTabLayout);
-        appBarLayout = view.findViewById(R.id.profileTabBar);
-        viewPager = view.findViewById(R.id.viewPager);
+        TabLayout tabLayout = view.findViewById(R.id.profileTabLayout);
+        ViewPager viewPager = view.findViewById(R.id.viewPager);
 
         ProfileTabAdapter profileTabAdapter = new ProfileTabAdapter(getChildFragmentManager());
         profileTabAdapter.addFragment(new ProfileBioTab(), "Bio");

@@ -72,7 +72,8 @@
                 android:text="Reset Password Now"
                 android:textAllCaps="false"
                 android:textColor="@color/black_semi_transparent"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:onClick="startReset"/>
 
         </RelativeLayout>
 
@@ -95,7 +96,8 @@
             android:fontFamily="sans-serif"
             android:text="Remembered Password Again?"
             android:textAllCaps="true"
-            android:textColor="@color/black_semi_transparent" />
+            android:textColor="@color/black_semi_transparent"
+            android:onClick="goToLogin"/>
 
     </RelativeLayout>
 

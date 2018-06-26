@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements PositiveWordsReq
 
         initializePositiveWords();
         initializeVariables();
-        setAuthentication();
+        initializeAuthentication();
     }
 
     @Override
@@ -100,11 +100,6 @@ public class LoginActivity extends AppCompatActivity implements PositiveWordsReq
                 Toast.LENGTH_LONG).show();
     }
 
-    public void goToRegister(View view) {
-        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-        startActivity(intent);
-    }
-
     public void startLogin(View view) {
         if (loginUsername.getText().toString().isEmpty() || loginPassword.getText().toString().isEmpty()) {
             Toast.makeText(LoginActivity.this, "please enter email and password", Toast.LENGTH_SHORT).show();
@@ -114,6 +109,13 @@ public class LoginActivity extends AppCompatActivity implements PositiveWordsReq
             validate(name, password);
         }
     }
+
+    public void goToRegister(View view) {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
+
 
     public void goToReset(View view) {
         Intent intent = new Intent(LoginActivity.this, ResetActivity.class);
@@ -128,7 +130,7 @@ public class LoginActivity extends AppCompatActivity implements PositiveWordsReq
         positiveWordsRequest.getPositiveWords(this);
     }
 
-    public void setAuthentication() {
+    public void initializeAuthentication() {
 
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {

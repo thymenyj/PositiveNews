@@ -196,13 +196,20 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
             @Override
             public void onClick(View v) {
                 final Preferences preferences = new Preferences();
-                preferences.setBusiness(Float.parseFloat(business_score.getText().toString()));
-                preferences.setEntertainment(Float.parseFloat(entertainment_score.getText().toString()));
-                preferences.setHealth(Float.parseFloat(health_score.getText().toString()));
-                preferences.setScience(Float.parseFloat(science_score.getText().toString()));
-                preferences.setSports(Float.parseFloat(sports_score.getText().toString()));
-                preferences.setTechnology(Float.parseFloat(technology_score.getText().toString()));
+                float business = Float.parseFloat(business_score.getText().toString());
+                float entertainment = Float.parseFloat(entertainment_score.getText().toString());
+                float health = Float.parseFloat(health_score.getText().toString());
+                float science = Float.parseFloat(science_score.getText().toString());
+                float sports = Float.parseFloat(sports_score.getText().toString());
+                float technology = Float.parseFloat(technology_score.getText().toString());
+                preferences.setBusiness(business);
+                preferences.setEntertainment(entertainment);
+                preferences.setHealth(health);
+                preferences.setScience(science);
+                preferences.setSports(sports);
+                preferences.setTechnology(technology);
                 preferences.setGeneral(1);
+
                 databaseReference = FirebaseDatabase.getInstance().getReference();
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 userId = user.getUid();
@@ -238,5 +245,6 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
         Toast.makeText(getContext(), message,
                 Toast.LENGTH_LONG).show();
     }
+
 
 }

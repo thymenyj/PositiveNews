@@ -17,9 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetActivity extends AppCompatActivity {
     private EditText resetEmail;
-    private Button resetBack, resetReset;
     private FirebaseAuth firebaseAuth;
-    private String userEmail;
     private RelativeLayout rellay1, rellay2;
 
     android.os.Handler handler = new android.os.Handler();
@@ -37,44 +35,43 @@ public class ResetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reset);
         handler.postDelayed(runnable, 750); //750 is the timeout for the splash
 
+        initializeDatabase();
+        initializeVariables();
+    }
+
+    public void initializeVariables() {
         rellay1 = findViewById(R.id.rellay1);
         rellay2 = findViewById(R.id.rellay2);
         resetEmail = findViewById(R.id.resetEmail);
-        resetReset = findViewById(R.id.resetReset);
-        resetBack = findViewById(R.id.resetBack);
+    }
 
+    public void initializeDatabase() {
         firebaseAuth = FirebaseAuth.getInstance();
+    }
 
-        resetReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                userEmail = resetEmail.getText().toString().trim();
+    public void startReset(View view) {
+        String userEmail = resetEmail.getText().toString().trim();
 
-                if (userEmail.equals("")) {
-                    Toast.makeText(ResetActivity.this, "Invalid input", Toast.LENGTH_SHORT).show();
-                } else {
-                    firebaseAuth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(ResetActivity.this, "Password reset, email is sent", Toast.LENGTH_SHORT).show();
-                                finish();
-                                startActivity(new Intent(ResetActivity.this, LoginActivity.class));
-                            } else {
-                                Toast.makeText(ResetActivity.this, "Error occured", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+        if (userEmail.equals("")) {
+            Toast.makeText(ResetActivity.this, "Invalid input", Toast.LENGTH_SHORT).show();
+        } else {
+            firebaseAuth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(ResetActivity.this, "Password reset, email is sent", Toast.LENGTH_SHORT).show();
+                        finish();
+                        startActivity(new Intent(ResetActivity.this, LoginActivity.class));
+                    } else {
+                        Toast.makeText(ResetActivity.this, "Error occured", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }
+    }
 
-        resetBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ResetActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+    public void goToLogin(View view) {
+        Intent intent = new Intent(ResetActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 }

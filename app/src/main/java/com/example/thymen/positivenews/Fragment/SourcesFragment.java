@@ -26,7 +26,6 @@ import java.util.ArrayList;
 
 
 public class SourcesFragment extends Fragment implements SourcesRequest.Callback, SourcesFeedRequest.Callback {
-    private DrawerLayout drawerLayout;
     private ListView sourcesList, sourceFeed;
 
 
@@ -35,7 +34,6 @@ public class SourcesFragment extends Fragment implements SourcesRequest.Callback
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sources, container, false);
 
-        drawerLayout = view.findViewById(R.id.drawer_layout);
         sourcesList = view.findViewById(R.id.sources_list);
         sourceFeed = view.findViewById(R.id.source_feed);
 

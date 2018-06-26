@@ -30,126 +30,29 @@ public class WalkthroughActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private LinearLayout layoutDot;
-    private TextView[]dotstv;
     private int[]layouts;
     private Button buttonSkip;
     private Button buttonNext;
-    private WalkthroughSlideAdapter walkthroughSlideAdapter;
-    public DatabaseReference database;
+    private DatabaseReference database;
 
-    private float business = 1, entertainment = 1, health = 1, science = 1, sports = 1, technology = 1;
+    private float businessScore = 1, entertainmentScore = 1, healthScore = 1, scienceScore = 1, sportsScore = 1, technologyScore = 1, generalScore = 1;
 
-    private TextView welcome;
     private ImageView businessPhoto, entertainmentPhoto, healthPhoto, sciencePhoto, sportsPhoto, technologyPhoto;
-
-    private float startingValue = 100;
-
-    private String firstLogin, nameUser;
+    private String firstLogin;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        database = FirebaseDatabase.getInstance().getReference();
-
-        ValueEventListener postListener = new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                String userId = user.getUid();
-                firstLogin = dataSnapshot.child("users").child(userId).child("firstLogin").getValue().toString();
-                nameUser = dataSnapshot.child("users").child(userId).child("name").getValue(String.class);
-                if (firstLogin.equals("false")) {
-                    startMainActivity();
-                    finish();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("TAG", "something went wrong", databaseError.toException());
-            }
-        };
-        database.addValueEventListener(postListener);
-
         setStatusBarTransparent();
+
+        initializeDatabase();
+        checkFirstLogin();
 
         setContentView(R.layout.activity_walkthrough);
 
-        viewPager = findViewById(R.id.view_pager);
-        layoutDot = findViewById(R.id.dotLayout);
-        buttonNext = findViewById(R.id.next);
-        buttonSkip = findViewById(R.id.skip);
-
-
-        //When user press skip, start Main Activity
-        buttonSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                startMainActivity();
-            }
-        });
-
-        buttonNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int currentPage = viewPager.getCurrentItem()+1;
-                if(currentPage < layouts.length - 1) {
-                    //move to next page
-                    viewPager.setCurrentItem(currentPage);
-                } else if (currentPage == layouts.length - 1) {
-                    ValueEventListener postListener = new ValueEventListener() {
-
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            String userId = user.getUid();
-                            Preferences preferences = new Preferences();
-                            preferences.setBusiness(business);
-                            preferences.setEntertainment(entertainment);
-                            preferences.setHealth(health);
-                            preferences.setScience(science);
-                            preferences.setSports(sports);
-                            preferences.setTechnology(technology);
-                            preferences.setGeneral(1);
-                            database.child("users").child(userId).child("preferences").setValue(preferences);
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.d("TAG", "something went wrong", databaseError.toException());
-                        }
-                    };
-                    database.addValueEventListener(postListener);
-                    viewPager.setCurrentItem(currentPage);
-                }
-                else {
-                    ValueEventListener postListener = new ValueEventListener() {
-
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            String userId = user.getUid();
-                            database.child("users").child(userId).child("firstLogin").setValue("false");
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.d("TAG", "something went wrong", databaseError.toException());
-                        }
-                    };
-                    database.addValueEventListener(postListener);
-                    startMainActivity();
-                }
-            }
-        });
-
-        layouts = new int[]{R.layout.walkthrough_slide_1,R.layout.walkthrough_slide_2, R.layout.walkthrough_slide_3, R.layout.walkthrough_slide_4};
-        walkthroughSlideAdapter = new WalkthroughSlideAdapter(layouts, getApplicationContext());
-        viewPager.setAdapter(walkthroughSlideAdapter);
-
+        initializeVariables();
+        initializeAdapter();
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -160,120 +63,15 @@ public class WalkthroughActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 if(position == layouts.length-1){
-                    //LAST PAGE
                     buttonNext.setText("START");
                     buttonSkip.setVisibility(View.GONE);
                 } else if (position == layouts.length-2){
                     buttonNext.setText("NEXT");
                     buttonSkip.setVisibility(View.VISIBLE);
+                    initializeVariablesSlide3();
+                    getPreferences();
 
-                    // instantiate switches
-                    businessPhoto = findViewById(R.id.business_photo);
-                    entertainmentPhoto = findViewById(R.id.entertainment_photo);
-                    healthPhoto = findViewById(R.id.health_photo);
-                    sciencePhoto = findViewById(R.id.science_photo);
-                    sportsPhoto = findViewById(R.id.sports_photo);
-                    technologyPhoto = findViewById(R.id.technology_photo);
-
-                    businessPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                    entertainmentPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                    healthPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                    sciencePhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                    sportsPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                    technologyPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-
-                    businessPhoto.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (business == 1) {
-                                businessPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                                business = 50;
-                            } else if (business == 50) {
-                                businessPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                                business = 100;
-                            } else if (business == 100) {
-                                businessPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                                business = 1;
-                            }
-                        }
-                    });
-                    entertainmentPhoto.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (entertainment == 1) {
-                                entertainmentPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                                entertainment = 50;
-                            } else if (entertainment == 50) {
-                                entertainmentPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                                entertainment = 100;
-                            } else if (entertainment == 100) {
-                                entertainmentPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                                entertainment = 1;
-                            }
-                        }
-                    });
-                    healthPhoto.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (health == 1) {
-                                healthPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                                health = 50;
-                            } else if (health == 50) {
-                                healthPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                                health = 100;
-                            } else if (health == 100) {
-                                healthPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                                health = 1;
-                            }
-                        }
-                    });
-                    sciencePhoto.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (science == 1) {
-                                sciencePhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                                science = 50;
-                            } else if (science == 50) {
-                                sciencePhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                                science = 100;
-                            } else if (science == 100) {
-                                sciencePhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                                science = 1;
-                            }
-                        }
-                    });
-                    sportsPhoto.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (sports == 1) {
-                                sportsPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                                sports = 50;
-                            } else if (sports == 50) {
-                                sportsPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                                sports = 100;
-                            } else if (sports == 100) {
-                                sportsPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                                sports = 1;
-                            }
-                        }
-                    });
-                    technologyPhoto.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (technology == 1) {
-                                technologyPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                                technology = 50;
-                            } else if (technology == 50) {
-                                technologyPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                                technology = 100;
-                            } else if (technology == 100) {
-                                technologyPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                                technology = 1;
-                            }
-                        }
-                    });
-                }
-                else {
+                } else {
                     buttonNext.setText("NEXT");
                     buttonSkip.setVisibility(View.VISIBLE);
                 }
@@ -292,7 +90,7 @@ public class WalkthroughActivity extends AppCompatActivity {
 
     private void setDotStatus(int page){
         layoutDot.removeAllViews();
-        dotstv =new TextView[layouts.length];
+        TextView[] dotstv = new TextView[layouts.length];
         for (int i = 0; i < dotstv.length; i++) {
             dotstv[i] = new TextView(this);
             dotstv[i].setText(Html.fromHtml("&#8226;"));
@@ -305,16 +103,219 @@ public class WalkthroughActivity extends AppCompatActivity {
             dotstv[page].setTextColor(Color.parseColor("#000000"));
         }
     }
-    private void startMainActivity(){
-//        setFirstTimeStartStatus(false);
-        startActivity(new Intent(WalkthroughActivity.this, HomeActivity.class));
-        finish();
-    }
+
     private void setStatusBarTransparent(){
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE|View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(Color.TRANSPARENT);
+    }
 
+    public void checkFirstLogin() {
+        ValueEventListener postListener = new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String userId = user.getUid();
+                firstLogin = dataSnapshot.child("users").child(userId).child("firstLogin").getValue().toString();
+                if (firstLogin.equals("false")) {
+                    startMainActivity();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("TAG", "something went wrong", databaseError.toException());
+            }
+        };
+        database.addValueEventListener(postListener);
+    }
+
+    public void initializeDatabase() {
+        database = FirebaseDatabase.getInstance().getReference();
+    }
+
+    public void initializeVariables() {
+        viewPager = findViewById(R.id.view_pager);
+        layoutDot = findViewById(R.id.dotLayout);
+        buttonNext = findViewById(R.id.next);
+        buttonSkip = findViewById(R.id.skip);
+    }
+
+    public void goToHome(View view) {
+        startMainActivity();
+    }
+
+    public void startMainActivity() {
+        Intent intent = new Intent(WalkthroughActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToNextSlide(View view) {
+        int currentPage = viewPager.getCurrentItem()+1;
+        if(currentPage < layouts.length - 1) {
+            //move to next page
+            viewPager.setCurrentItem(currentPage);
+        } else if (currentPage == layouts.length - 1) {
+            ValueEventListener postListener = new ValueEventListener() {
+
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String userId = user.getUid();
+                    Preferences preferences = new Preferences();
+                    preferences.setBusiness(businessScore);
+                    preferences.setEntertainment(entertainmentScore);
+                    preferences.setHealth(healthScore);
+                    preferences.setScience(scienceScore);
+                    preferences.setSports(sportsScore);
+                    preferences.setTechnology(technologyScore);
+                    preferences.setGeneral(generalScore);
+                    database.child("users").child(userId).child("preferences").setValue(preferences);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d("TAG", "something went wrong", databaseError.toException());
+                }
+            };
+            database.addValueEventListener(postListener);
+            viewPager.setCurrentItem(currentPage);
+        } else {
+            ValueEventListener postListener = new ValueEventListener() {
+
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String userId = user.getUid();
+                    database.child("users").child(userId).child("firstLogin").setValue("false");
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d("TAG", "something went wrong", databaseError.toException());
+                }
+            };
+            database.addValueEventListener(postListener);
+            startMainActivity();
+        }
+    }
+
+    public void initializeAdapter() {
+        layouts = new int[]{R.layout.walkthrough_slide_1,R.layout.walkthrough_slide_2, R.layout.walkthrough_slide_3, R.layout.walkthrough_slide_4};
+        WalkthroughSlideAdapter walkthroughSlideAdapter = new WalkthroughSlideAdapter(layouts, getApplicationContext());
+        viewPager.setAdapter(walkthroughSlideAdapter);
+    }
+
+    public void getPreferences() {
+            businessPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (businessScore == 1) {
+                        businessPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        businessScore = 50;
+                    } else if (businessScore == 50) {
+                        businessPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        businessScore = 100;
+                    } else if (businessScore == 100) {
+                        businessPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        businessScore = 1;
+                    }
+                }
+            });
+            entertainmentPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (entertainmentScore == 1) {
+                        entertainmentPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        entertainmentScore = 50;
+                    } else if (entertainmentScore == 50) {
+                        entertainmentPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        entertainmentScore = 100;
+                    } else if (entertainmentScore == 100) {
+                        entertainmentPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        entertainmentScore = 1;
+                    }
+                }
+            });
+            healthPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (healthScore == 1) {
+                        healthPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        healthScore = 50;
+                    } else if (healthScore == 50) {
+                        healthPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        healthScore = 100;
+                    } else if (healthScore == 100) {
+                        healthPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        healthScore = 1;
+                    }
+                }
+            });
+            sciencePhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (scienceScore == 1) {
+                        sciencePhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        scienceScore = 50;
+                    } else if (scienceScore == 50) {
+                        sciencePhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        scienceScore = 100;
+                    } else if (scienceScore == 100) {
+                        sciencePhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        scienceScore = 1;
+                    }
+                }
+            });
+            sportsPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (sportsScore == 1) {
+                        sportsPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        sportsScore = 50;
+                    } else if (sportsScore == 50) {
+                        sportsPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        sportsScore = 100;
+                    } else if (sportsScore == 100) {
+                        sportsPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        sportsScore = 1;
+                    }
+                }
+            });
+            technologyPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (technologyScore == 1) {
+                        technologyPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        technologyScore = 50;
+                    } else if (technologyScore == 50) {
+                        technologyPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        technologyScore = 100;
+                    } else if (technologyScore == 100) {
+                        technologyPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        technologyScore = 1;
+                    }
+                }
+            });
+    }
+
+    public void initializeVariablesSlide3() {
+        // instantiate switches
+        businessPhoto = findViewById(R.id.business);
+        entertainmentPhoto = findViewById(R.id.entertainment);
+        healthPhoto = findViewById(R.id.health);
+        sciencePhoto = findViewById(R.id.science);
+        sportsPhoto = findViewById(R.id.sports);
+        technologyPhoto = findViewById(R.id.technology);
+
+        businessPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+        entertainmentPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+        healthPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+        sciencePhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+        sportsPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+        technologyPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
     }
 }
