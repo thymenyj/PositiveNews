@@ -88,6 +88,7 @@
                         android:layout_marginTop="5dp"
                         android:background="@drawable/edittextbackground"
                         android:fontFamily="sans-serif-light"
+                        android:inputType="textPassword"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:textColor="@color/black_semi_transparent"
@@ -111,7 +112,8 @@
                 android:text="Login Now"
                 android:textAllCaps="false"
                 android:textColor="@color/black_semi_transparent"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:onClick="startLogin"/>
 
         </RelativeLayout>
 
@@ -134,7 +136,8 @@
             android:fontFamily="sans-serif"
             android:text="Signup Now"
             android:textAllCaps="true"
-            android:textColor="@color/black_semi_transparent" />
+            android:textColor="@color/black_semi_transparent"
+            android:onClick="goToRegister"/>
 
         <Button
             android:id="@+id/loginReset"
@@ -145,7 +148,8 @@
             android:fontFamily="sans-serif"
             android:text="Forgot Password?"
             android:textAllCaps="true"
-            android:textColor="@color/black_semi_transparent" />
+            android:textColor="@color/black_semi_transparent"
+            android:onClick="goToReset"/>
 
     </RelativeLayout>
 

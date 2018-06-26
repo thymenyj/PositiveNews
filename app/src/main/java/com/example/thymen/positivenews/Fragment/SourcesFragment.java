@@ -10,21 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.thymen.positivenews.Activity.ArticleActivity;
-import com.example.thymen.positivenews.Callback.SourcesFeedRequest;
+import com.example.thymen.positivenews.Request.SourcesFeedRequest;
 import com.example.thymen.positivenews.Layout.FeedLayout;
 import com.example.thymen.positivenews.Object.NewsArticle;
 import com.example.thymen.positivenews.Object.NewsSource;
 import com.example.thymen.positivenews.R;
 import com.example.thymen.positivenews.Layout.SourcesLayout;
-import com.example.thymen.positivenews.Callback.SourcesRequest;
+import com.example.thymen.positivenews.Request.SourcesRequest;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class SourcesFragment extends Fragment implements SourcesRequest.Callback, SourcesFeedRequest.Callback {

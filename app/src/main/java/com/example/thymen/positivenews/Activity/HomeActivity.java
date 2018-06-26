@@ -40,23 +40,18 @@ public class HomeActivity extends FragmentActivity implements BottomNavigationVi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
         Fragment fragment = null;
-
         switch (item.getItemId()) {
 
             case R.id.navigation_personal:
                 fragment = new HomeFragment();
                 break;
-
             case R.id.navigation_profile:
                 fragment = new ProfileFragment();
-
                 break;
             case R.id.navigation_trending:
                 fragment = new SourcesFragment();
                 break;
-
         }
         return loadFragment(fragment);
     }

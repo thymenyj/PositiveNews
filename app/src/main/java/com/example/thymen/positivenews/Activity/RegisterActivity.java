@@ -24,16 +24,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
-    public TextView registerName, registerEmail, registerPassword;
-    public Button registerRegister, registerBack;
+    private TextView registerName, registerEmail, registerPassword;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference database;
-
-    public String userName, userEmail, userPassword;
-    public ArrayList<String> preferences, savedArticles;
-    public String validateName, validateEmail, validatePassword;
-
-    public RelativeLayout rellay1, rellay2;
+    private String userName, userEmail;
+    private RelativeLayout rellay1, rellay2;
 
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
@@ -44,96 +39,87 @@ public class RegisterActivity extends AppCompatActivity {
         }
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        database = FirebaseDatabase.getInstance().getReference();
-        rellay1 = findViewById(R.id.rellay1);
-        rellay2 = findViewById(R.id.rellay2);
-
         handler.postDelayed(runnable, 750); //750 is the timeout for the splash
 
-        registerName = findViewById(R.id.registerName);
-        registerEmail = findViewById(R.id.registerEmail);
-        registerPassword = findViewById(R.id.registerPassword);
-
-        registerRegister = findViewById(R.id.registerRegister);
-        registerBack = findViewById(R.id.registerBack);
-
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        registerRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (validate()) {
-                    userName = registerName.getText().toString().trim();
-                    userEmail = registerEmail.getText().toString().trim();
-                    userPassword = registerPassword.getText().toString().trim();
-
-
-                    firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(RegisterActivity.this, "registerd successful", Toast.LENGTH_SHORT).show();
-                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                String userId = user.getUid();
-                                User newUser = new User();
-                                newUser.setName(userName);
-                                newUser.setEmail(userEmail);
-                                newUser.setFirstLogin("true");
-                                database.child("users").child(userId).setValue(newUser);
-
-                                database.child("users").child(userId).child("preferences").child("business").setValue(100);
-                                database.child("users").child(userId).child("preferences").child("entertainment").setValue(100);
-                                database.child("users").child(userId).child("preferences").child("health").setValue(100);
-                                database.child("users").child(userId).child("preferences").child("science").setValue(100);
-                                database.child("users").child(userId).child("preferences").child("sports").setValue(100);
-                                database.child("users").child(userId).child("preferences").child("technology").setValue(100);
-                                database.child("users").child(userId).child("preferences").child("business").setValue(100);
-                                database.child("users").child(userId).child("preferences").child("general").setValue(100);
-                                                                                                                                                                                                            database.child("users").child(userId).child("preferences").child("business").setValue(1);
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(RegisterActivity.this, "registration failed", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
-            }
-        });
-
-        registerBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+        initializeDatabase();
+        initializeVariables();
     }
 
     public Boolean validate() {
         Boolean result = false;
 
-        validateName = registerName.getText().toString();
-        validateEmail = registerEmail.getText().toString();
-        validatePassword = registerPassword.getText().toString();
+        String validateName = registerName.getText().toString();
+        String validateEmail = registerEmail.getText().toString();
+        String validatePassword = registerPassword.getText().toString();
 
         if (validateName.isEmpty() || validateEmail.isEmpty() || validatePassword.isEmpty()) {
             Toast.makeText(this, "please enter all details", Toast.LENGTH_SHORT).show();
-        }
-        else if(validatePassword.length() < 6) {
+        } else if(validatePassword.length() < 6) {
             Toast.makeText(this, "password requires 6 characters", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             result = true;
         }
 
         return result;
     }
 
+    public void initializeDatabase() {
+        database = FirebaseDatabase.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    public void initializeVariables() {
+        rellay1 = findViewById(R.id.rellay1);
+        rellay2 = findViewById(R.id.rellay2);
+        registerName = findViewById(R.id.registerName);
+        registerEmail = findViewById(R.id.registerEmail);
+        registerPassword = findViewById(R.id.registerPassword);
+    }
+
+    public void startRegister(View view) {
+        if (validate()) {
+            userName = registerName.getText().toString().trim();
+            userEmail = registerEmail.getText().toString().trim();
+            String userPassword = registerPassword.getText().toString().trim();
+
+
+            firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(RegisterActivity.this, "registerd successful", Toast.LENGTH_SHORT).show();
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        String userId = user.getUid();
+                        User newUser = new User();
+                        newUser.setName(userName);
+                        newUser.setEmail(userEmail);
+                        newUser.setFirstLogin("true");
+                        database.child("users").child(userId).setValue(newUser);
+                        database.child("users").child(userId).child("preferences").child("business").setValue(100);
+                        database.child("users").child(userId).child("preferences").child("entertainment").setValue(100);
+                        database.child("users").child(userId).child("preferences").child("health").setValue(100);
+                        database.child("users").child(userId).child("preferences").child("science").setValue(100);
+                        database.child("users").child(userId).child("preferences").child("sports").setValue(100);
+                        database.child("users").child(userId).child("preferences").child("technology").setValue(100);
+                        database.child("users").child(userId).child("preferences").child("business").setValue(100);
+                        database.child("users").child(userId).child("preferences").child("general").setValue(100);
+                        database.child("users").child(userId).child("preferences").child("business").setValue(1);
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "registration failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    public void goToLogin(View view) {
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
 }

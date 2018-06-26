@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.thymen.positivenews.Callback.ProfileBioRequest;
+import com.example.thymen.positivenews.Request.ProfileBioRequest;
 import com.example.thymen.positivenews.R;
 
 public class ProfileBioTab extends Fragment implements ProfileBioRequest.Callback{
     View view;
-    private TextView bioName, bioEmail;
+    private TextView bioText;
 
     public ProfileBioTab() {
     }
@@ -24,8 +24,7 @@ public class ProfileBioTab extends Fragment implements ProfileBioRequest.Callbac
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.tab_profile_bio, container, false);
 
-        bioName = view.findViewById(R.id.bioName);
-        bioEmail = view.findViewById(R.id.bioEmail);
+        bioText = view.findViewById(R.id.bioText);
 
         ProfileBioRequest profileBioRequest = new ProfileBioRequest(getContext());
         profileBioRequest.getBio(this);
@@ -35,8 +34,7 @@ public class ProfileBioTab extends Fragment implements ProfileBioRequest.Callbac
     }
 
     public void gotBio(String name, String email) {
-        bioName.setText(name);
-        bioEmail.setText(email);
+        bioText.setText("Welcome to your profile bio " + name + ". I hope you are having a nice day! You are logged in with the email " + email + ".");
     }
 
     public void gotBioError(String message) {

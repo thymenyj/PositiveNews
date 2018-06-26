@@ -7,25 +7,12 @@
     <color name="white">#FFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="transparent">#00000000</color>
-    <color name="mint">#19AA8B</color>
-    <color name="gradStop">#23A7D8</color>
     <color name="grey">#A9A9A9</color>
 
     <color name="dotInactive">#a9b4bb</color>
     <color name="dotActive">#000000</color>
 
-    <color name="blue">#4169E1</color>
-
     <color name="black_semi_transparent">#B2000000</color>
     <color name="white_pressed">#f1f1f1</color>
-    <color name="pink">#e91e63</color>
-    <color name="pink_pressed">#ec407a</color>
-    <color name="blue_semi_transparent">#805677fc</color>
-    <color name="blue_semi_transparent_pressed">#80738ffe</color>
-
-    <color name="base_green">#2ECC71</color>
-    <color name="stroke_green">#1E8449</color>
-    <color name="base_red">#E74C3C</color>
-    <color name="stroke_red">#A93226</color>
 
 </resources>

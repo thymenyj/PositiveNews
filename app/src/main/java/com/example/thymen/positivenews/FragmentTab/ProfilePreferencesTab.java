@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.thymen.positivenews.Callback.ProfilePreferencesRequest;
+import com.example.thymen.positivenews.Request.ProfilePreferencesRequest;
 import com.example.thymen.positivenews.Object.Preferences;
 import com.example.thymen.positivenews.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -70,8 +70,12 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
             @Override
             public void onClick(View v) {
                 oldScore = Float.parseFloat(business_score.getText().toString());
-                newScore = oldScore - 1;
-                business_score.setText(Float.toString(newScore));
+                if (oldScore > 0) {
+                    newScore = oldScore - 1;
+                    business_score.setText(Float.toString(newScore));
+                } else {
+                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         business_plus.setOnClickListener(new View.OnClickListener() {
@@ -87,8 +91,12 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
             @Override
             public void onClick(View v) {
                 oldScore = Float.parseFloat(entertainment_score.getText().toString());
-                newScore = oldScore - 1;
-                entertainment_score.setText(Float.toString(newScore));
+                if (oldScore > 0) {
+                    newScore = oldScore - 1;
+                    entertainment_score.setText(Float.toString(newScore));
+                } else {
+                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         entertainment_plus.setOnClickListener(new View.OnClickListener() {
@@ -104,8 +112,12 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
             @Override
             public void onClick(View v) {
                 oldScore = Float.parseFloat(health_score.getText().toString());
-                newScore = oldScore - 1;
-                health_score.setText(Float.toString(newScore));
+                if (oldScore > 0) {
+                    newScore = oldScore - 1;
+                    health_score.setText(Float.toString(newScore));
+                } else {
+                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         health_plus.setOnClickListener(new View.OnClickListener() {
@@ -121,8 +133,12 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
             @Override
             public void onClick(View v) {
                 oldScore = Float.parseFloat(science_score.getText().toString());
-                newScore = oldScore - 1;
-                science_score.setText(Float.toString(newScore));
+                if (oldScore > 0) {
+                    newScore = oldScore - 1;
+                    science_score.setText(Float.toString(newScore));
+                } else {
+                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         science_plus.setOnClickListener(new View.OnClickListener() {
@@ -138,8 +154,12 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
             @Override
             public void onClick(View v) {
                 oldScore = Float.parseFloat(sports_score.getText().toString());
-                newScore = oldScore - 1;
-                sports_score.setText(Float.toString(newScore));
+                if (oldScore > 0) {
+                    newScore = oldScore - 1;
+                    sports_score.setText(Float.toString(newScore));
+                } else {
+                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         sports_plus.setOnClickListener(new View.OnClickListener() {
@@ -155,8 +175,12 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
             @Override
             public void onClick(View v) {
                 oldScore = Float.parseFloat(technology_score.getText().toString());
-                newScore = oldScore - 1;
-                technology_score.setText(Float.toString(newScore));
+                if (oldScore > 0) {
+                    newScore = oldScore - 1;
+                    technology_score.setText(Float.toString(newScore));
+                } else {
+                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         technology_plus.setOnClickListener(new View.OnClickListener() {

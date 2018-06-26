@@ -14,8 +14,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.thymen.positivenews.Activity.ArticleActivity;
-import com.example.thymen.positivenews.Callback.HomePersonalIndexRequest;
-import com.example.thymen.positivenews.Callback.HomePersonalRequest;
+import com.example.thymen.positivenews.Request.HomePersonalIndexRequest;
+import com.example.thymen.positivenews.Request.HomePersonalRequest;
 import com.example.thymen.positivenews.Layout.FeedLayout;
 import com.example.thymen.positivenews.Globals.MyApplication;
 import com.example.thymen.positivenews.Object.NewsArticle;
@@ -35,7 +35,7 @@ public class HomePersonalTab extends Fragment implements HomePersonalRequest.Cal
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_personal_feed, container, false);
+        View view = inflater.inflate(R.layout.tab_home_personal_feed, container, false);
         Log.d("startPersonal", "Start");
         personalListView = view.findViewById(R.id.personalListView);
         preFinalList = new ArrayList<>();

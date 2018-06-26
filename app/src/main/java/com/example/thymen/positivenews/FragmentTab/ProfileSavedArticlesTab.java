@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.thymen.positivenews.Activity.ArticleActivity;
-import com.example.thymen.positivenews.Callback.ProfileSavedArticlesRequest;
+import com.example.thymen.positivenews.Request.ProfileSavedArticlesRequest;
 import com.example.thymen.positivenews.Object.NewsArticle;
 import com.example.thymen.positivenews.R;
 import com.example.thymen.positivenews.Layout.SavedArticlesListLayout;

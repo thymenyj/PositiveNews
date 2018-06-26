@@ -130,7 +130,8 @@
                 android:text="Register Now"
                 android:textAllCaps="false"
                 android:textColor="@color/black_semi_transparent"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:onClick="startRegister"/>
 
         </RelativeLayout>
 
@@ -153,7 +154,8 @@
             android:fontFamily="sans-serif"
             android:text="Already Registered?"
             android:textAllCaps="true"
-            android:textColor="@color/black_semi_transparent" />
+            android:textColor="@color/black_semi_transparent"
+            android:onClick="goToLogin"/>
 
     </RelativeLayout>
 

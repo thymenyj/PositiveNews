@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.thymen.positivenews.Activity.ArticleActivity;
-import com.example.thymen.positivenews.Callback.HomeCategoriesRequest;
+import com.example.thymen.positivenews.Request.HomeCategoriesRequest;
 import com.example.thymen.positivenews.Layout.FeedLayout;
 import com.example.thymen.positivenews.Globals.MyApplication;
 import com.example.thymen.positivenews.Object.NewsArticle;
@@ -34,7 +34,7 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_home_categories_feed, container, false);
+        View view = inflater.inflate(R.layout.tab_home_categories_feed, container, false);
 
         hashMap = ((MyApplication) getActivity().getApplication()).getPositiveWords();
 

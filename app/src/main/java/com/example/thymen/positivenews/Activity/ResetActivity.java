@@ -5,7 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.thymen.positivenews.R;
@@ -14,15 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetActivity extends AppCompatActivity {
-
-    public EditText resetEmail;
-    public android.widget.Button resetBack, resetReset;
-
+    private EditText resetEmail;
+    private Button resetBack, resetReset;
     private FirebaseAuth firebaseAuth;
-
-    public String userEmail;
-
-    public android.widget.RelativeLayout rellay1, rellay2;
+    private String userEmail;
+    private RelativeLayout rellay1, rellay2;
 
     android.os.Handler handler = new android.os.Handler();
     Runnable runnable = new Runnable() {
@@ -33,18 +31,14 @@ public class ResetActivity extends AppCompatActivity {
         }
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset);
+        handler.postDelayed(runnable, 750); //750 is the timeout for the splash
 
         rellay1 = findViewById(R.id.rellay1);
         rellay2 = findViewById(R.id.rellay2);
-
-        handler.postDelayed(runnable, 750); //750 is the timeout for the splash
-
-
         resetEmail = findViewById(R.id.resetEmail);
         resetReset = findViewById(R.id.resetReset);
         resetBack = findViewById(R.id.resetBack);

@@ -10,11 +10,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:text="Categories"
         android:textAlignment="center"
         android:textColor="@color/grey"
         android:textSize="30dp"
+        android:textStyle="italic" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose: don't like it, little bit interested, love the topic"
+        android:textAlignment="center"
+        android:textColor="@color/grey"
+        android:textSize="15dp"
         android:textStyle="italic" />
     <LinearLayout
         android:layout_width="wrap_content"
