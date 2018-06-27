@@ -28,11 +28,14 @@ public class HomePersonalIndexRequest {
     private ArrayList<Integer> indexList;
     private static int LISTSIZE = 60;
 
-
+    // preference value from firebase for every category set by the user
     private float businessPreference, entertainmentPreference, healthPreference, sciencePreference, sportsPreference, technologyPreference, totalPreference;
+    // converted to float value between 0 and 1
     private float businessScore, entertainmentScore, healthScore, scienceScore, sportsScore, technologyScore;
 
-    private int listLength1 = 2, listLength2 = 3, listLength3 = 4, listLength4 = 5, listLength5 = 6, listLength6 = 7;
+    // listLenghts to calculate the indexrange of a category.
+    // 1 = business, 2 = entertainment, 3 = health, 4 = science, 5= sports, 6 = technology;
+    private int listLength1 = 1, listLength2 = 1, listLength3 = 1, listLength4 = 1, listLength5 = 1, listLength6 = 1;
 
     public interface Callback {
         void gotPersonalIndex(ArrayList<Integer> indexListUsed);
@@ -73,6 +76,9 @@ public class HomePersonalIndexRequest {
                 sportsScore = sportsPreference / totalPreference;
                 technologyScore = technologyPreference / totalPreference;
 
+                // creates list with all indexes for one specific class (business)
+                // takes random amount(based on preferencesScore) indexes from the list
+                // adds it to the total index list
                 ArrayList<Integer> list1 = new ArrayList<>();
                 for (int i = 0; i < listLength1; i++) {
                     list1.add(new Integer(i));

@@ -25,7 +25,6 @@ public class HomeCategoriesRequest implements Response.Listener<JSONObject>, Res
     public Callback activity;
     public Context context;
     private String category;
-    private ArrayList<NewsArticle> categoriesFeed;
     private HashMap<String, String> hashMap;
 
     public interface Callback {
@@ -40,7 +39,6 @@ public class HomeCategoriesRequest implements Response.Listener<JSONObject>, Res
     public void getCategoriesFeed(Callback activity, String category, HashMap<String, String> hashMap) {
         this.activity = activity;
         this.category = category;
-        this.categoriesFeed = categoriesFeed;
         this.hashMap = hashMap;
 
         String url = "https://newsapi.org/v2/top-headlines?category=" + category + "&country=us&apiKey=95523811729048518c1cf1c3da766379";
@@ -87,7 +85,7 @@ public class HomeCategoriesRequest implements Response.Listener<JSONObject>, Res
 
     public Boolean checkPositivity(String titleArticle) {
         int scorePositivity = 0;
-
+        // splits the String into an array of words
         String[] arr = titleArticle.split("\\s*(=>|,|\\s)\\s*");
         for (String wordString : arr) {
             String word = hashMap.get(wordString);
