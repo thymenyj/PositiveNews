@@ -1,3 +1,8 @@
+/*
+    WalkthroughActivity sets all the slides for the walkthrough. Updates the buttons to match
+    the current slide. Updates the first preferences of the user when submitted.
+ */
+
 package com.example.thymen.positivenews.Activity;
 
 import android.content.Intent;

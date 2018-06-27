@@ -1,9 +1,12 @@
+/*
+    HomeCategoriesTab shows a feed based on the chosen category.
+ */
+
 package com.example.thymen.positivenews.FragmentTab;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.thymen.positivenews.Activity.ArticleActivity;
@@ -54,7 +56,8 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
         categoryBusiness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                category = "entertainment";
+                showCategoryFeed(category);
             }
         });
 

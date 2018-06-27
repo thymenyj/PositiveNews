@@ -15,4 +15,14 @@
         android:textSize="17dp"
         android:textStyle="italic" />
 
+    <Button
+        android:id="@+id/startLogout"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_margin="40dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Log out"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/white_pressed" />
+
 </LinearLayout>

@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 public class MyApplication extends Application {
-
-    private String key, value;
     private HashMap<String, String> positiveWordsMap;
 
     public HashMap<String,String> getPositiveWords() {

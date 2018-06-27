@@ -1,3 +1,7 @@
+/*
+    HomeFragment contains the personalFeedFragment and categoryFeedFragment
+*/
+
 package com.example.thymen.positivenews.Fragment;
 
 import android.support.annotation.Nullable;
@@ -13,8 +17,6 @@ import com.example.thymen.positivenews.FragmentTab.HomeCategoriesTab;
 import com.example.thymen.positivenews.FragmentTab.HomePersonalTab;
 import com.example.thymen.positivenews.Adapter.HomeTabAdapter;
 import com.example.thymen.positivenews.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 
 public class HomeFragment extends Fragment {

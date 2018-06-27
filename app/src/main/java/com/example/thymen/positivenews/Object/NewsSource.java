@@ -8,8 +8,6 @@ public class NewsSource implements Serializable {
     String name;
     String description;
     String url;
-    String category;
-    String language;
 
     public NewsSource() {
 
@@ -45,21 +43,5 @@ public class NewsSource implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
     }
 }

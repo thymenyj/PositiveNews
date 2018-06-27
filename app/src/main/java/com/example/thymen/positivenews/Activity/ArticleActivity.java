@@ -1,10 +1,13 @@
+/*
+    This activity shows a newsarticle based on a webView. The article activity contains
+    two buttons: likeArticle and saveArticle. The likeArticle updates the preferences of the user
+    the saveArticle stores the article in the savedArticleList
+ */
+
 package com.example.thymen.positivenews.Activity;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -19,13 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-// This activity shows a newsarticle based on a webView. The article activity contains
-// two buttons: likeArticle and saveArticle. The likeArticle updates the preferences of the user
-// the saveArticle stores the article in the savedArticleList
+
 
 public class ArticleActivity extends AppCompatActivity implements ArticleLikeRequest.Callback, ArticleSaveRequest.Callback {
     private DatabaseReference databaseReference;

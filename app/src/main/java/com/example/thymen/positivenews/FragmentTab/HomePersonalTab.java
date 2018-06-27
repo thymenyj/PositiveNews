@@ -1,10 +1,13 @@
+/*
+    HomePersonalTab shows a feed base
+ */
+
 package com.example.thymen.positivenews.FragmentTab;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,24 +29,16 @@ import java.util.HashMap;
 
 
 public class HomePersonalTab extends Fragment implements HomePersonalRequest.Callback, HomePersonalIndexRequest.Callback{
-    public ListView personalListView;
-    private HashMap<String, String> hashMap;
+    private ListView personalListView;
     private ArrayList<NewsArticle> personalNewsArticlesList;
-    private ArrayList<NewsArticle> preFinalList;
-    private ArrayList<String> titleList;
+    private HashMap<String, String> hashMap;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_home_personal_feed, container, false);
-        Log.d("startPersonal", "Start");
-        personalListView = view.findViewById(R.id.personalListView);
-        preFinalList = new ArrayList<>();
-        titleList = new ArrayList<>();
 
-        hashMap = ((MyApplication) getActivity().getApplication()).getPositiveWords();
-
-        personalNewsArticlesList = new ArrayList<>();
+        initializeVariables(view);
 
         HomePersonalRequest homePersonalRequest = new HomePersonalRequest(getContext());
         homePersonalRequest.getPersonalFeed(this, hashMap);
@@ -51,9 +46,7 @@ public class HomePersonalTab extends Fragment implements HomePersonalRequest.Cal
         personalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 NewsArticle clickedItem = (NewsArticle) parent.getItemAtPosition(position);
-
                 Intent intent = new Intent(getActivity(), ArticleActivity.class);
                 intent.putExtra("clickedItem", clickedItem);
                 startActivity(intent);
@@ -65,8 +58,6 @@ public class HomePersonalTab extends Fragment implements HomePersonalRequest.Cal
 
     public void gotPersonalFeed(ArrayList<NewsArticle> personalFeed, ArrayList<Integer> lengthsList) {
         this.personalNewsArticlesList = personalFeed;
-        Log.d("personalListArticles", personalNewsArticlesList.toString());
-
         HomePersonalIndexRequest homePersonalIndexRequest = new HomePersonalIndexRequest(getContext());
         homePersonalIndexRequest.getPersonalIndex(this, lengthsList);
     }
@@ -77,19 +68,11 @@ public class HomePersonalTab extends Fragment implements HomePersonalRequest.Cal
     }
 
     public void gotPersonalIndex(ArrayList<Integer> indexList) {
-
-        Log.d("indexList", indexList.toString());
         ArrayList<NewsArticle> finalList = new ArrayList<>();
-
-        Log.d("preFinal", preFinalList.toString());
-
         for (int i = 0; i < indexList.size(); i++) {
             int index = indexList.get(i);
             finalList.add(personalNewsArticlesList.get(index));
         }
-
-        Log.d("finalList", finalList.toString());
-
         ArrayAdapter<NewsArticle> adapter = new FeedLayout(getContext(), R.layout.layout_feed, finalList);
         personalListView.setAdapter(adapter);
     }
@@ -99,6 +82,11 @@ public class HomePersonalTab extends Fragment implements HomePersonalRequest.Cal
                 Toast.LENGTH_LONG).show();
     }
 
+    public void initializeVariables(View view) {
+        personalListView = view.findViewById(R.id.personalListView);
+        personalNewsArticlesList = new ArrayList<>();
+        hashMap = ((MyApplication) getActivity().getApplication()).getPositiveWords();
+    }
 
 
 }

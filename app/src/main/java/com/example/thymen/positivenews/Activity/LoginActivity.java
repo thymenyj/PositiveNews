@@ -1,3 +1,9 @@
+/*
+    LoginActivity is the startactivity of the app and logs the user in. When logged in
+    the user is directed to their profile. From this activity, the user is able to go
+    to the register activity and the reset activity.
+ */
+
 package com.example.thymen.positivenews.Activity;
 
 import android.content.Intent;
@@ -7,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,14 +25,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
-// this activity contains a loginfunction. The user can login based on a firebasedatabase.
-// From this activity, the user is able to go to the register activity and the reset activity.
 
 public class LoginActivity extends AppCompatActivity implements PositiveWordsRequest.Callback {
     private TextView loginUsername, loginPassword;
@@ -59,6 +60,7 @@ public class LoginActivity extends AppCompatActivity implements PositiveWordsReq
     public void onStart() {
         super.onStart();
         firebaseAuth.addAuthStateListener(authStateListener);
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -91,7 +93,6 @@ public class LoginActivity extends AppCompatActivity implements PositiveWordsReq
             String word = list.get(i);
             updateHashmap.put(word, word);
         }
-        Log.d("initHashMap", updateHashmap.toString());
         ((MyApplication) this.getApplication()).setPositiveWords(updateHashmap);
     }
 

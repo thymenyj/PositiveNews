@@ -1,3 +1,7 @@
+/*
+    RegisterActivity creates a new Firebase user  and adds a (User.class) to the database
+ */
+
 package com.example.thymen.positivenews.Activity;
 
 import android.content.Intent;
@@ -6,7 +10,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +23,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
     private TextView registerName, registerEmail, registerPassword;
@@ -119,5 +120,6 @@ public class RegisterActivity extends AppCompatActivity {
     public void goToLogin(View view) {
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 }

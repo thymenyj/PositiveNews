@@ -17,10 +17,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class FeedLayout extends ArrayAdapter<NewsArticle> {
-
     private ArrayList<NewsArticle> item;
-    TextView titleItem, dateItem;
-    ImageView imageItem;
 
     @NonNull
     @Override
@@ -29,8 +26,8 @@ public class FeedLayout extends ArrayAdapter<NewsArticle> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_feed, parent, false);
         }
-        titleItem = convertView.findViewById(R.id.titleItem);
-        imageItem =  convertView.findViewById(R.id.imageItem);
+        TextView titleItem = convertView.findViewById(R.id.titleItem);
+        ImageView imageItem =  convertView.findViewById(R.id.imageItem);
 
         titleItem.setText(object.getTitle());
         Picasso.with(getContext()).load(object.getImage()).into(imageItem);

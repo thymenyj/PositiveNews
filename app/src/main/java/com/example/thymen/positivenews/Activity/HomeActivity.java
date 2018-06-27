@@ -1,5 +1,8 @@
-package com.example.thymen.positivenews.Activity;
+/*
+    HomeActivity contains the fragments: ProfileFragment, HomeFragment and SourceFragment
+ */
 
+package com.example.thymen.positivenews.Activity;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;

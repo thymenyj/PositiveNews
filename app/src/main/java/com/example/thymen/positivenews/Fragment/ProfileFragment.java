@@ -1,23 +1,23 @@
+/*
+    Fragment contains bio, savedArticles and preferences tab.
+ */
+
 package com.example.thymen.positivenews.Fragment;
 
 import android.support.annotation.Nullable;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.thymen.positivenews.FragmentTab.ProfileBioTab;
 import com.example.thymen.positivenews.FragmentTab.ProfilePreferencesTab;
 import com.example.thymen.positivenews.FragmentTab.ProfileSavedArticlesTab;
 import com.example.thymen.positivenews.Adapter.ProfileTabAdapter;
 import com.example.thymen.positivenews.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 
 public class ProfileFragment extends Fragment {

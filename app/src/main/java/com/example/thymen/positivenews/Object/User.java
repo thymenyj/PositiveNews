@@ -1,13 +1,9 @@
 package com.example.thymen.positivenews.Object;
 
-import java.util.ArrayList;
-
 public class User {
     String name;
     String email;
     String firstLogin;
-    ArrayList<String> preferences;
-    ArrayList<String> savedArticles;
 
     public String getName() {
         return name;

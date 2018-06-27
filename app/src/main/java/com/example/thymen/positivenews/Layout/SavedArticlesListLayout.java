@@ -11,15 +11,11 @@ import android.widget.TextView;
 
 import com.example.thymen.positivenews.Object.NewsArticle;
 import com.example.thymen.positivenews.R;
-import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
 public class SavedArticlesListLayout extends ArrayAdapter<NewsArticle> {
-    private DatabaseReference databaseReference;
     private ArrayList<NewsArticle> savedArticlesList;
-    private String titleSavedArticle;
-    private TextView titleSavedArticleTextView;
 
     @NonNull
     @Override
@@ -28,9 +24,9 @@ public class SavedArticlesListLayout extends ArrayAdapter<NewsArticle> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_saved_articles_list, parent, false);
         }
-        titleSavedArticle = object.getTitle().toString();
+        String titleSavedArticle = object.getTitle();
 
-        titleSavedArticleTextView = convertView.findViewById(R.id.titleItem);
+        TextView titleSavedArticleTextView = convertView.findViewById(R.id.titleItem);
         titleSavedArticleTextView.setText(titleSavedArticle);
 
         return convertView;
