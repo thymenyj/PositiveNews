@@ -1,5 +1,6 @@
 /*
-    HomePersonalTab shows a feed base
+    HomePersonalTab shows a feed based on the personal preferences stored in firebase
+    by using two Requests: HomePersonalRequest and HomePersonalIndexRequest.
  */
 
 package com.example.thymen.positivenews.FragmentTab;

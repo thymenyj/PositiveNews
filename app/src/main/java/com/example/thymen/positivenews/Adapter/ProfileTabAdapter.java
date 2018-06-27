@@ -1,3 +1,7 @@
+/*
+    ProfileTabAdapter sets the positions of ProfileBioTab, ProfileSavedArticlesTab and ProfilePreferencesTab.
+ */
+
 package com.example.thymen.positivenews.Adapter;
 
 import android.support.annotation.Nullable;

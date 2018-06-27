@@ -1,12 +1,18 @@
+/*
+    HomeTabAdapter sets the postions of HomePersonalTab and HomeCategoriesTab.
+ */
+
 package com.example.thymen.positivenews.Adapter;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
+
 
 import com.example.thymen.positivenews.FragmentTab.HomeCategoriesTab;
+
+
 import com.example.thymen.positivenews.FragmentTab.HomePersonalTab;
 
 import java.util.ArrayList;

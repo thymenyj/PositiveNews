@@ -1,3 +1,7 @@
+/*
+    WalkthroughSlideAdapter sets the positions of the walkthroughslides.
+ */
+
 package com.example.thymen.positivenews.Adapter;
 
 import android.content.Context;
