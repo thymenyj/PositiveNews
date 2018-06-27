@@ -67,10 +67,13 @@ public class WalkthroughActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                // last page
                 if(position == layouts.length-1){
                     buttonNext.setText("START");
                     buttonSkip.setVisibility(View.GONE);
-                } else if (position == layouts.length-2){
+                }
+                // third page including preference
+                else if (position == layouts.length-2){
                     buttonNext.setText("NEXT");
                     buttonSkip.setVisibility(View.VISIBLE);
                     initializeVariablesSlide3();
@@ -137,27 +140,6 @@ public class WalkthroughActivity extends AppCompatActivity {
         database.addValueEventListener(postListener);
     }
 
-    public void initializeDatabase() {
-        database = FirebaseDatabase.getInstance().getReference();
-    }
-
-    public void initializeVariables() {
-        viewPager = findViewById(R.id.view_pager);
-        layoutDot = findViewById(R.id.dotLayout);
-        buttonNext = findViewById(R.id.next);
-        buttonSkip = findViewById(R.id.skip);
-    }
-
-    public void goToHome(View view) {
-        startMainActivity();
-    }
-
-    public void startMainActivity() {
-        Intent intent = new Intent(WalkthroughActivity.this, HomeActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     public void goToNextSlide(View view) {
         int currentPage = viewPager.getCurrentItem()+1;
         if(currentPage < layouts.length - 1) {
@@ -215,100 +197,15 @@ public class WalkthroughActivity extends AppCompatActivity {
     }
 
     public void getPreferences() {
-            businessPhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (businessScore == 1) {
-                        businessPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                        businessScore = 50;
-                    } else if (businessScore == 50) {
-                        businessPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                        businessScore = 100;
-                    } else if (businessScore == 100) {
-                        businessPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                        businessScore = 1;
-                    }
-                }
-            });
-            entertainmentPhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (entertainmentScore == 1) {
-                        entertainmentPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                        entertainmentScore = 50;
-                    } else if (entertainmentScore == 50) {
-                        entertainmentPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                        entertainmentScore = 100;
-                    } else if (entertainmentScore == 100) {
-                        entertainmentPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                        entertainmentScore = 1;
-                    }
-                }
-            });
-            healthPhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (healthScore == 1) {
-                        healthPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                        healthScore = 50;
-                    } else if (healthScore == 50) {
-                        healthPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                        healthScore = 100;
-                    } else if (healthScore == 100) {
-                        healthPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                        healthScore = 1;
-                    }
-                }
-            });
-            sciencePhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (scienceScore == 1) {
-                        sciencePhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                        scienceScore = 50;
-                    } else if (scienceScore == 50) {
-                        sciencePhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                        scienceScore = 100;
-                    } else if (scienceScore == 100) {
-                        sciencePhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                        scienceScore = 1;
-                    }
-                }
-            });
-            sportsPhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (sportsScore == 1) {
-                        sportsPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                        sportsScore = 50;
-                    } else if (sportsScore == 50) {
-                        sportsPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                        sportsScore = 100;
-                    } else if (sportsScore == 100) {
-                        sportsPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                        sportsScore = 1;
-                    }
-                }
-            });
-            technologyPhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (technologyScore == 1) {
-                        technologyPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
-                        technologyScore = 50;
-                    } else if (technologyScore == 50) {
-                        technologyPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
-                        technologyScore = 100;
-                    } else if (technologyScore == 100) {
-                        technologyPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
-                        technologyScore = 1;
-                    }
-                }
-            });
+            businessPhoto.setOnClickListener(setScore);
+            entertainmentPhoto.setOnClickListener(setScore);
+            healthPhoto.setOnClickListener(setScore);
+            sciencePhoto.setOnClickListener(setScore);
+            sportsPhoto.setOnClickListener(setScore);
+            technologyPhoto.setOnClickListener(setScore);
     }
 
     public void initializeVariablesSlide3() {
-        // instantiate switches
         businessPhoto = findViewById(R.id.business);
         entertainmentPhoto = findViewById(R.id.entertainment);
         healthPhoto = findViewById(R.id.health);
@@ -323,4 +220,106 @@ public class WalkthroughActivity extends AppCompatActivity {
         sportsPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
         technologyPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
     }
+
+    public void initializeDatabase() {
+        database = FirebaseDatabase.getInstance().getReference();
+    }
+
+    public void initializeVariables() {
+        viewPager = findViewById(R.id.view_pager);
+        layoutDot = findViewById(R.id.dotLayout);
+        buttonNext = findViewById(R.id.next);
+        buttonSkip = findViewById(R.id.skip);
+    }
+
+    public void goToHome(View view) {
+        startMainActivity();
+    }
+
+    public void startMainActivity() {
+        Intent intent = new Intent(WalkthroughActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private View.OnClickListener setScore = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v){
+            switch (v.getId()) {
+                case R.id.business:
+                    if (businessScore == 1) {
+                        businessPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        businessScore = 50;
+                    } else if (businessScore == 50) {
+                        businessPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        businessScore = 100;
+                    } else if (businessScore == 100) {
+                        businessPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        businessScore = 1;
+                    }
+                    break;
+                case R.id.entertainment:
+                    if (entertainmentScore == 1) {
+                        entertainmentPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        entertainmentScore = 50;
+                    } else if (entertainmentScore == 50) {
+                        entertainmentPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        entertainmentScore = 100;
+                    } else if (entertainmentScore == 100) {
+                        entertainmentPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        entertainmentScore = 1;
+                    }
+                    break;
+                case R.id.health:
+                    if (healthScore == 1) {
+                        healthPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        healthScore = 50;
+                    } else if (healthScore == 50) {
+                        healthPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        healthScore = 100;
+                    } else if (healthScore == 100) {
+                        healthPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        healthScore = 1;
+                    }
+                    break;
+                case R.id.science:
+                    if (scienceScore == 1) {
+                        sciencePhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        scienceScore = 50;
+                    } else if (scienceScore == 50) {
+                        sciencePhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        scienceScore = 100;
+                    } else if (scienceScore == 100) {
+                        sciencePhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        scienceScore = 1;
+                    }
+                    break;
+                case R.id.sports:
+                    if (sportsScore == 1) {
+                        sportsPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        sportsScore = 50;
+                    } else if (sportsScore == 50) {
+                        sportsPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        sportsScore = 100;
+                    } else if (sportsScore == 100) {
+                        sportsPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        sportsScore = 1;
+                    }
+                    break;
+                case R.id.technology:
+                    if (technologyScore == 1) {
+                        technologyPhoto.setColorFilter(Color.argb(100, 100, 100, 100));
+                        technologyScore = 50;
+                    } else if (technologyScore == 50) {
+                        technologyPhoto.setColorFilter(Color.argb(0, 0, 0, 0));
+                        technologyScore = 100;
+                    } else if (technologyScore == 100) {
+                        technologyPhoto.setColorFilter(Color.argb(200, 200, 200, 200));
+                        technologyScore = 1;
+                    }
+                    break;
+            }
+        }
+    };
 }

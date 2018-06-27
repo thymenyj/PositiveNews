@@ -46,60 +46,12 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 NewsArticle clickedItem = (NewsArticle) parent.getItemAtPosition(position);
-
                 Intent intent = new Intent(getActivity(), ArticleActivity.class);
                 intent.putExtra("clickedItem", clickedItem);
                 startActivity(intent);
             }
         });
 
-        categoryBusiness.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                category = "entertainment";
-                showCategoryFeed(category);
-            }
-        });
-
-        categoryEntertainment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                category = "entertainment";
-                showCategoryFeed(category);
-            }
-        });
-
-        categoryHealth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                category = "health";
-                showCategoryFeed(category);
-            }
-        });
-
-        categoryScience.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                category = "science";
-                showCategoryFeed(category);
-            }
-        });
-
-        categorySports.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                category = "sports";
-                showCategoryFeed(category);
-            }
-        });
-
-        categoryTechnology.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                category = "technology";
-                showCategoryFeed(category);
-            }
-        });
         return view;
     }
 
@@ -113,12 +65,6 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
         Toast.LENGTH_LONG).show();
     }
 
-
-    public void showCategoryFeed(String category) {
-        HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
-        homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
-    }
-
     public void initializeVariables(View view) {
         hashMap = ((MyApplication) getActivity().getApplication()).getPositiveWords();
 
@@ -129,6 +75,35 @@ public class HomeCategoriesTab extends Fragment implements HomeCategoriesRequest
         categoryScience = view.findViewById(R.id.categoryScience);
         categorySports = view.findViewById(R.id.categorySports);
         categoryTechnology = view.findViewById(R.id.categoryTechnology);
+
+        categoryBusiness.setOnClickListener(setCategory);
+        categoryEntertainment.setOnClickListener(setCategory);
+        categoryHealth.setOnClickListener(setCategory);
+        categoryScience.setOnClickListener(setCategory);
+        categorySports.setOnClickListener(setCategory);
+        categoryTechnology.setOnClickListener(setCategory);
     }
 
+    private View.OnClickListener setCategory = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.categoryBusiness:
+                    category = "business";
+                case R.id.categoryEntertainment:
+                    category = "entertainment";
+                case R.id.categoryHealth:
+                    category = "health";
+                case R.id.categoryScience:
+                    category = "science";
+                case R.id.categorySports:
+                    category = "sports";
+                case R.id.categoryTechnology:
+                    category = "technology";
+            }
+            HomeCategoriesRequest homeCategoriesRequest = new HomeCategoriesRequest(getContext());
+            homeCategoriesRequest.getCategoriesFeed(HomeCategoriesTab.this, category, hashMap);
+        }
+    };
 }

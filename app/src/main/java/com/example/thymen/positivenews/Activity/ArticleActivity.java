@@ -24,8 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
-
-
 public class ArticleActivity extends AppCompatActivity implements ArticleLikeRequest.Callback, ArticleSaveRequest.Callback {
     private DatabaseReference databaseReference;
     private String categoryOfArticle, titleOfArticle;

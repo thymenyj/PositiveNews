@@ -106,128 +106,20 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
     }
 
     public void setUpdateScore() {
-        business_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(business_score.getText().toString());
-                if (oldScore > 0) {
-                    newScore = Float.toString(oldScore - 1);
-                    business_score.setText(newScore);
-                } else {
-                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        business_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(business_score.getText().toString());
-                newScore = Float.toString(oldScore + 1);
-                business_score.setText(newScore);
-            }
-        });
-        entertainment_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(entertainment_score.getText().toString());
-                if (oldScore > 0) {
-                    newScore = Float.toString(oldScore - 1);
-                    entertainment_score.setText(newScore);
-                } else {
-                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        entertainment_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(entertainment_score.getText().toString());
-                newScore = Float.toString(oldScore + 1);
-                entertainment_score.setText(newScore);
-            }
-        });
-        health_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(health_score.getText().toString());
-                if (oldScore > 0) {
-                    newScore = Float.toString(oldScore - 1);
-                    health_score.setText(newScore);
-                } else {
-                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        health_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(health_score.getText().toString());
-                newScore = Float.toString(oldScore + 1);
-                health_score.setText(newScore);
-            }
-        });
-        science_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(science_score.getText().toString());
-                if (oldScore > 0) {
-                    newScore = Float.toString(oldScore - 1);
-                    science_score.setText(newScore);
-                } else {
-                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        science_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(science_score.getText().toString());
-                newScore = Float.toString(oldScore + 1);
-                science_score.setText(newScore);
-            }
-        });
+        business_minus.setOnClickListener(updatePreferencesScore);
+        business_plus.setOnClickListener(updatePreferencesScore);
+        entertainment_minus.setOnClickListener(updatePreferencesScore);
+        entertainment_plus.setOnClickListener(updatePreferencesScore);
+        health_minus.setOnClickListener(updatePreferencesScore);
+        health_plus.setOnClickListener(updatePreferencesScore);
+        science_minus.setOnClickListener(updatePreferencesScore);
+        science_plus.setOnClickListener(updatePreferencesScore);
 
-        sports_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(sports_score.getText().toString());
-                if (oldScore > 0) {
-                    newScore = Float.toString(oldScore - 1);
-                    sports_score.setText(newScore);
-                } else {
-                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        sports_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(sports_score.getText().toString());
-                newScore = Float.toString(oldScore + 1);
-                sports_score.setText(newScore);
-            }
-        });
+        sports_minus.setOnClickListener(updatePreferencesScore);
+        sports_plus.setOnClickListener(updatePreferencesScore);
 
-        technology_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(technology_score.getText().toString());
-                if (oldScore > 0) {
-                    newScore = Float.toString(oldScore - 1);
-                    technology_score.setText(newScore);
-                } else {
-                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        technology_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldScore = Float.parseFloat(technology_score.getText().toString());
-                newScore = Float.toString(oldScore + 1);
-                technology_score.setText(newScore);
-            }
-        });
+        technology_minus.setOnClickListener(updatePreferencesScore);
+        technology_plus.setOnClickListener(updatePreferencesScore);
     }
 
 //        switch (view.getId()) {
@@ -240,17 +132,7 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
 //                    Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
 //                }
 //                break;
-//            case R.id.business_plus:
-//            case R.id.entertainment_minus:
-//            case R.id.entertainment_plus:
-//            case R.id.health_minus
-//            case R.id.health_plus:
-//            case R.id.science_plus:
-//            case R.id.science_minus:
-//            case R.id.sports_minus:
-//            case R.id.sports_plus:
-//            case R.id.technology_minus:
-//            case R.id.technology_plus:
+
 
     public void updatePreferences() {
         savePreferences.setOnClickListener(new View.OnClickListener() {
@@ -288,4 +170,97 @@ public class ProfilePreferencesTab extends Fragment implements ProfilePreference
             }
         });
     }
+
+    private View.OnClickListener updatePreferencesScore = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.business_minus:
+                    oldScore = Float.parseFloat(business_score.getText().toString());
+                    if (oldScore > 0) {
+                        newScore = Float.toString(oldScore - 1);
+                        business_score.setText(newScore);
+                    } else {
+                        Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case R.id.business_plus:
+                    oldScore = Float.parseFloat(business_score.getText().toString());
+                    newScore = Float.toString(oldScore + 1);
+                    business_score.setText(newScore);
+                    break;
+                case R.id.entertainment_minus:
+                    oldScore = Float.parseFloat(entertainment_score.getText().toString());
+                    if (oldScore > 0) {
+                        newScore = Float.toString(oldScore - 1);
+                        entertainment_score.setText(newScore);
+                    } else {
+                        Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case R.id.entertainment_plus:
+                    oldScore = Float.parseFloat(entertainment_score.getText().toString());
+                    newScore = Float.toString(oldScore + 1);
+                    entertainment_score.setText(newScore);
+                    break;
+                case R.id.health_minus:
+                    oldScore = Float.parseFloat(health_score.getText().toString());
+                    if (oldScore > 0) {
+                        newScore = Float.toString(oldScore - 1);
+                        health_score.setText(newScore);
+                    } else {
+                        Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case R.id.health_plus:
+                    oldScore = Float.parseFloat(health_score.getText().toString());
+                    newScore = Float.toString(oldScore + 1);
+                    health_score.setText(newScore);
+                    break;
+                case R.id.science_minus:
+                    oldScore = Float.parseFloat(science_score.getText().toString());
+                    if (oldScore > 0) {
+                        newScore = Float.toString(oldScore - 1);
+                        science_score.setText(newScore);
+                    } else {
+                        Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case R.id.science_plus:
+                    oldScore = Float.parseFloat(science_score.getText().toString());
+                    newScore = Float.toString(oldScore + 1);
+                    science_score.setText(newScore);
+                    break;
+                case R.id.sports_minus:
+                    oldScore = Float.parseFloat(sports_score.getText().toString());
+                    if (oldScore > 0) {
+                        newScore = Float.toString(oldScore - 1);
+                        sports_score.setText(newScore);
+                    } else {
+                        Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case R.id.sports_plus:
+                    oldScore = Float.parseFloat(sports_score.getText().toString());
+                    newScore = Float.toString(oldScore + 1);
+                    sports_score.setText(newScore);
+                    break;
+                case R.id.technology_minus:
+                    oldScore = Float.parseFloat(technology_score.getText().toString());
+                    if (oldScore > 0) {
+                        newScore = Float.toString(oldScore - 1);
+                        technology_score.setText(newScore);
+                    } else {
+                        Toast.makeText(getContext(), "No negative score allowed", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case R.id.technology_plus:
+                    oldScore = Float.parseFloat(technology_score.getText().toString());
+                    newScore = Float.toString(oldScore + 1);
+                    technology_score.setText(newScore);
+                    break;
+            }
+        }
+    };
 }

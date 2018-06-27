@@ -22,8 +22,6 @@ public class HomeTabAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
-        Log.d("getItem", "fragmentpager");
         switch(position){
             case 0:
                 return new HomePersonalTab();
