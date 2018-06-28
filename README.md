@@ -1,7 +1,7 @@
 # PositiveNews
-*Thymen van de Lagemaat*
-*[Powered by News API](https://newsapi.org/)*
+*Thymen van de Lagemaat*,
 App for positive news based on the preferences of the user
+*[Powered by News API](https://newsapi.org/)*
 
 ## Problem 
 The accessibility of news is increasing with the day. News is spreading faster and faster. Many people are using there smartphones daily to stay up-to-date.
