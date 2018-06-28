@@ -37,9 +37,8 @@ PositiveNews is an news application. The application shows news articles based o
 ### Activities
 
 #### LoginAcitivty
-The activity creates a firebase login opportunity for the user. The user is asked for a email and password. The user can also go the the RegisterActivity and ResetActivity.
-In the oncreate a PositiveWordsRequest is called. The positive words are stored in a global hashmap, which can be user
-in the checkPositivity function.
+The activity creates a firebase login opportunity for the user. The user is asked for a email and password. The user can also go the the [RegisterActivity](#registeractivity) and [ResetActivity](resetactivity).
+In the oncreate a [PositiveWordsRequest](#positivewordsrequest) is called. The positive words are stored in a global hashmap, which can be user in the checkPositivity function.
 
 #### RegisterActivity
 The activity creates a firebase register opportunity for the user. The user is asked for a email, password and name. When a registration is 
@@ -58,22 +57,29 @@ Slide 3 shows six pictures of the different categories. The user can click the p
 The activity is a container for three fragments: [ProfileFragment](#profilefragment), [HomeFragment](#homefragment) and [SourceFragment](#sourcefragment).
 
 #### ArticleActivity
+The activity shows a webview of the clicked news article. The activity contains two floating action buttons: likeArticle and saveArticle. The likeArticle calls the [ArticleLikeRequest](#articlelikerequest) and updates the score in the firebase with +1. The articleSave calls the [ArticleSaveRequest](#articlesaverequest) and stores the news article in the saved article list in firebase.
 
 ### Adapters
 
 #### HomeTabAdapter
+The adapter sets all the tabs for the [HomeFragment](#homefragment).
 
 #### ProfileTabAdapter
+The adapter sets all the tabs for the [ProfileFragment](#profilefragment).
 
 #### WalkthroughSlideAdapter
+The adapter sets all the slides for the [WalkthroughActivity](#walkthroughactivity).
 
 ### Fragments
 
 #### HomeFragment
+The fragment contains two tabs: [HomePersonalTab](#homepersonaltab) and [HomeCategoriesTab](#homecategoriestab).
 
 #### ProfileFragment
+The fragment contains three tabs: [ProfileBioTab](#profilebiotab), [ProfileSavedArticlesTab](#profilesavedarticlestab) [ProfilePreferenceTab](#profilepreferencetab).
 
 #### SourcesFragment
+The fragment calls [SourcesRequest](#sourcesrequest) to display all the news sources in the drawer on the right. When a news source is clicked, [SourceFeedRequest](#sourcefeedrequest) is called to get the news articles from that news source.
 
 ### FragmentTabs
 
@@ -83,9 +89,10 @@ The activity is a container for three fragments: [ProfileFragment](#profilefragm
 
 #### ProfileBioTab
 
+#### ProfileSavedArticlesTab
+
 #### ProfilePreferencesTab
 
-#### ProfileSavedArticlesTab
 
 ### Layouts
 
