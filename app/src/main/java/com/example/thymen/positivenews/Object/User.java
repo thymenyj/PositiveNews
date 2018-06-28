@@ -1,9 +1,9 @@
 package com.example.thymen.positivenews.Object;
 
 public class User {
-    String name;
-    String email;
-    String firstLogin;
+    private String name;
+    private String email;
+    private String firstLogin;
 
     public String getName() {
         return name;

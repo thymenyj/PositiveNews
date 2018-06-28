@@ -1,13 +1,13 @@
 package com.example.thymen.positivenews.Object;
 
 public class Preferences {
-    float business;
-    float entertainment;
-    float health;
-    float science;
-    float sports;
-    float technology;
-    float general;
+    private float business;
+    private float entertainment;
+    private float health;
+    private float science;
+    private float sports;
+    private float technology;
+    private float general;
 
 
     public float getBusiness() {
