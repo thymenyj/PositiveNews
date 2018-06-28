@@ -1,6 +1,12 @@
 # PositiveNews 
 PositiveNews is an news application. The application shows news articles based on the user preferences. The app also filters the negative ners articles out of the newsfeed. 
 
+## Contents
+- [Short overview functionalities](#short-overview-functionalities)
+- [Challenges](#challenges)
+- [Difference from initial proposal](#difference-from-initial-proposal)
+- [Possible improvements for the future](#possible-improvements-for-the-future)
+
 ## Short overview functionalities
  
   StartScreen:
