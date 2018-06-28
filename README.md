@@ -13,18 +13,30 @@ Why do people reading more negative news articles than positive ones?
 A positive news app can help people to have a better start of the day. The start of the day is a very important part of the day, it is a starting point.
 People will be starting the day with a positiver worldview when they only read positive news articles. Positivity can improve productivity and decrease stress during.
 
-![](https://github.com/thymenyj/PositiveNews/blob/master/doc/ApplicationStart.JPG=100x100)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/LoginActivity.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/RegisterActivity.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/ResetActivity.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/WalkthroughSlide1.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/WalkthroughSlide2.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/WalkthroughSlide3.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/WalkthroughSlide4.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/ProfileBioTab.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/ProfileSavedArticlesTab.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/ProfilePreferencesTab.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/HomePersonalTab.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/HomeCategoriesTab.JPG)
-![Alt text](https://github.com/thymenyj/PositiveNews/blob/master/doc/SourcesFragment.JPG)
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/ApplicationStart.JPG" align="left" height="500" width="250" ></a>
 
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/LoginActivity.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/RegisterActivity.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/ResetActivity.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/WalkthroughSlide1.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/WalkthroughSlide2.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/WalkthroughSlide3.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/WalkthroughSlide4.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/ProfileBioTab.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/ProfileSavedArticlesTab.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/ProfilePreferencesTab.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/HomePersonalTab.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/HomeCategoriesTab.JPG" align="left" height="500" width="250" ></a>
+
+<a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/SourcesFragment.JPG" align="left" height="500" width="250" ></a>
