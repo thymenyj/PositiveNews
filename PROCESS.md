@@ -24,28 +24,28 @@ Created a tablayout for the profile Fragment. The profileFragment contains bioTa
 ### day 11: 
 Working on the likeButton of an article. The likebutton updates the preferences of the user in firebase.
 
-### day 12 (jun 18):
-Created an expandable floating action button in the HomeCategoriesTab to set the category.
+### day 12:
+Created an expandable floating action button in the HomeCategoriesTab to set the category. The expandable floating action button shows 6 other buttons, one for each category.
 
-### day 13: (jun 20):
-Updated the happyAlgorithm. The positivity checks is improved. 
+### day 13:
+Updated the happyAlgorithm. The positivity checks is improved. Created a check based on the titles. The function works with a splitfunction. 
 
-### day 14 (jun 21):
+### day 14:
 Improved the happyAlgorithm, fixed some bugs of the algorithm.
 
-### day 15 (jun 24):
+### day 15:
 Updated the feedlayout. The feedlayout contains now a cardview with pictures of the articles. 
 
-### day 16 (jun 25):
+### day 16:
 Improved the walkthrough (design) and created photo's in the third slide, instead of switches. The user can set the initial preferences to three different scores.
 
-### day 17 (jun 26):
+### day 17:
 Fixed the saved preference bug and improved the code quality and structure.
 
-### day 18 (jun 27):
+### day 18:
 Added comments and improved the code quality.
 
-### day 19 (jun 28):
+### day 19:
 Updated the github.
 
 
