@@ -1,7 +1,7 @@
 # PositiveNews 
 PositiveNews is an news application. The application shows news articles based on the user preferences. The app also filters the negative ners articles out of the newsfeed. 
 
-## Short overview
+## Short overview functionalities
  
   StartScreen:
   - [LoginActivity](#loginactivity):
@@ -178,4 +178,11 @@ The request is called from [SourcesFragment](#sourcesfragment). The request call
 Contains a hashmap of the positive words used in [PositiveWordsRequest](#positivewordsrequest).
 
 
-  
+## Challenges 
+
+In the last weeks several parts were harder to implement than other parts. The implementation of fragments and tab inside the fragments was in the beginning relatively hard, because I had never worked with the fragments (and navigationbars). The fragments were causing a few times minor errors, which were unclear for me, because this was the first time for me I worked with fragment classes. Another hard part was the implementation of the [HomePersonalTab](#homepersonaltab) because of the user preference based news feed. The algorithm did not work in the beginning, because the different listsizes of the individual categories were needed, but also the totallistsize. The callback functions are using variables which are declared in another class. Also there was a problem of duplicated articles in the list, but the NewsArticles were different objects, so I implemented a function which created a new list based on only the titles of the articles to check duplication. Also the positivitycheck was a challenge. I expected that the positivitycheck the hardest part was, but I think this was a bit easier than the preferences. This is maybe due to the fact that I implemented the positivitycheck in the end.
+
+## Differences from initial proposal
+The main features are almost the same as the proposal. Although there are some big changes in the design of the app. This is also due to the knowledge of the API in the beginning of the project. I thought I was going to use EventRegistry, but the API allowed a limited of requests. Now I am using NewsApi.org, which gives the opportunity to do more requests. A side effect is that this API does not return a JSON with a "bodyString" containing the text of the article. This is the reason I used a webview for the [ArticleActivity](#articleactivity). Another change in the design of the application is the use of fragments. 
+
+
