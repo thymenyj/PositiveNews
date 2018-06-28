@@ -50,12 +50,12 @@ succesful, a new User is added to the firebase. "firstLogin" is set to true and 
 The activity creates a opportunity for the user to reset their password in case they forgot the password. When a reset is used, a reset is send to the email adress of the user with a link to reset the password.
 
 #### WalkthroughActivity
-The activity checks if the user logged in for the first time. When it is the first time the walkthrough is shown, else the user is redirected to the [HomeAcitivty](#HomeActivity). The walkthrough contains 4 slides. Slide 1,2 and 4 are slides with text messages. 
+The activity checks if the user logged in for the first time. When it is the first time the walkthrough is shown, else the user is redirected to the [HomeAcitivty](#homeactivity). The walkthrough contains 4 slides. Slide 1,2 and 4 are slides with text messages. 
 Slide 3 shows six pictures of the different categories. The user can click the pictures to change the score of the preferences (1, 50 or 100). The activity updates the slide including the bottom buttons and pagedots.
 
 #### HomeActivity
 
-The activity is a container for three fragments: [ProfileFragment](#ProfileFragment), [HomeFragment](#HomeFragment) and [SourceFragment](####SourceFragment).
+The activity is a container for three fragments: [ProfileFragment](#profilefragment), [HomeFragment](#homefragment) and [SourceFragment](#sourcefragment).
 
 #### ArticleActivity
 
