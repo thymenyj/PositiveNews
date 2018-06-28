@@ -57,7 +57,7 @@ Slide 3 shows six pictures of the different categories. The user can click the p
 The activity is a container for three fragments: [ProfileFragment](#profilefragment), [HomeFragment](#homefragment) and [SourceFragment](#sourcefragment).
 
 #### ArticleActivity
-The activity shows a webview of the clicked news article. The activity contains two floating action buttons: likeArticle and saveArticle. The likeArticle calls the [ArticleLikeRequest](#articlelikerequest) and updates the score in the firebase with +1. The articleSave calls the [ArticleSaveRequest](#articlesaverequest) and stores the news article in the saved article list in firebase.
+The activity shows a webview of the clicked news article. The activity contains two floating action buttons: likeArticle and saveArticle. The likeArticle calls the [ArticleLikeRequest](#articlelikerequest) and updates the score in the firebase with +1. The articleSave calls the [ArticleSaveRequest](#articlesaverequest) and stores the news article in the saved article list in firebase. When the article is already saved, the articleSave button deletes the article from the saved article list.
 
 ### Adapters
 
@@ -90,27 +90,41 @@ The tab contains a expandable floating action button with buttons for all the di
 The tab calls [HomePersonalRequest](#homepersonalrequest) to get a list containing positive articles of all the six categories. When the tab received the list with articles, [HomePersonalIndexRequest](#homepersonalindexrequest) is called to get a list of the indexes for the article list. Those indexes are based on the preferences of the user.
 
 #### ProfileBioTab
-The tab calls [ProfileBioRequest](#profilebiorequest) to get the name and email of the user and display it in the textviews. The button also contains 
+The tab calls [ProfileBioRequest](#profilebiorequest) to get the name and email of the user and display it in the textviews. The tab also contains a button to log out.
 
 #### ProfileSavedArticlesTab
+The tab calls [ProfileSavedArticlesRequest](#profilesavedarticlesrequest) to get a list with all the saved articles of the user.
 
 #### ProfilePreferencesTab
-
+The tab calls [ProfilePreferencesTab](#profilepreferencestab) to get the preferences of the user. The user can push the plus minus buttons to change the score of a category. At the bottom of the page a save button is placed to sumbit the changes to the firebase.
 
 ### Layouts
 
 #### FeedLayout
+This is the layout used in [HomePersonalTab](#homepersonaltab), [HomeCategoriesTab](#homecategoriestab) and [SourcesFragment](#sourcesfragment).
 
 #### SavedArticlesListLayout
+This is the layout used in [ProfileSavedArticlesTab](#profilesavedarticlestab).
 
 #### SourcesLayout
+This is the layout used in [SourcesFragment](#sourcesfragment).
 
 
 ### Objects
 
 #### NewsArticles
+- String date;
+- String time;
+- String url;
+- String title;
+- String categories;
+- String image;
 
 #### NewsSource
+- String id;
+- String name;
+- String description;
+- String url;
 
 #### Preferences
 
