@@ -10,10 +10,10 @@
 - try to make a loop for the functions where there is a lot of repetition. 
 
 ### Mark
-- comments: 3
-- names:3
-- formatting: 3
-- organisation: 4
-- flow: 2
-- idiom: 3
-- structure: 3
+- comments:       3
+- names:          3
+- formatting:     3
+- organisation:   4
+- flow:           2
+- idiom:          3
+- structure:      3
