@@ -37,6 +37,12 @@ PositiveNews is an news application. The application shows news articles based o
       *Shows a welcomes message*
     - Slide 3 (save initial preferences):
       *Shows 6 different cateogries. User is able to set a category to dislike(1), like a bit(50) or like a lot(100).*
+      
+  API:
+  - [NewsApi](https://newsapi.org/)
+  
+  Database: 
+  - [Firebase](https://firebase.google.com/)
     
 ## Details
 
