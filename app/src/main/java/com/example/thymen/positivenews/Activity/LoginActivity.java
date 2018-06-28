@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity implements PositiveWordsReq
     private FirebaseAuth.AuthStateListener authStateListener;
     private RelativeLayout rellay1, rellay2;
 
+    // set animation for login
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
         @Override

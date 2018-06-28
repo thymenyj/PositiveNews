@@ -13,21 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:screenOrientation="portrait">
-        <activity android:name=".Activity.LoginActivity">
+        <activity android:name=".Activity.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.HomeActivity" />
-        <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.ResetActivity" />
-        <activity android:name=".Fragment.ProfileFragment" />
-        <activity android:name=".FragmentTab.HomePersonalTab" />
-        <activity android:name=".Activity.ArticleActivity" />
-        <activity android:name=".Fragment.SourcesFragment" />
-        <activity android:name=".Activity.WalkthroughActivity" />
+        <activity android:name=".Activity.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.ResetActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Fragment.ProfileFragment"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FragmentTab.HomePersonalTab"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.ArticleActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Fragment.SourcesFragment"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.WalkthroughActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
