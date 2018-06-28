@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 public class NewsSource implements Serializable {
-    String id;
-    String name;
-    String description;
-    String url;
+    private String id;
+    private String name;
+    private String description;
+    private String url;
 
     public NewsSource() {
 
