@@ -1,7 +1,7 @@
 # PositiveNews
-App for positive news based on the preferences of the user
-
 *Thymen van de Lagemaat*
+*[Powered by News API](https://newsapi.org/)*
+App for positive news based on the preferences of the user
 
 ## Problem 
 The accessibility of news is increasing with the day. News is spreading faster and faster. Many people are using there smartphones daily to stay up-to-date.
@@ -41,5 +41,3 @@ People will be starting the day with a positiver worldview when they only read p
 
 <a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/SourcesFragment.JPG" align="left" height="500" width="250" ></a>
 
-## License 
-[Powered by News API](https://newsapi.org/)
