@@ -127,35 +127,55 @@ This is the layout used in [SourcesFragment](#sourcesfragment).
 - String url;
 
 #### Preferences
+- float entertainment;
+- float health;
+- float science;
+- float sports;
+- float technology;
+- float general;
 
 #### User
-
+- String name;
+- String email;
+- String firstLogin;
 
 ### Requests
 
 #### ArticleLikeRequest
+The request is called from [ArticleActivity](#articleactivity) and calls the firebase to get the current preferences and updates the score of the category of the article by 1. 
 
 #### ArticleSaveRequest
+The request is called from [ArticleActivity](#articleactivity) and calls the firebase to get the current saved articles. When the current article is not in the article list, the news article is added to the list. When the article is already in the list, the news article is deleted from the list.
 
 #### HomeCategoriesRequest
+The request is called from [HomeCategoriesTab](#homecategoriestab). The request calls the API to get a list of articles based on the clicked cateogry. The articles are checked on positivity based on the [PositiveWords](#Globals).
 
 #### HomePersonalIndexRequest
+The request is called from [HomePersonalTab](#homepersonaltab). The request calls the firebase to get the preferences. Based on the preferences a list of indexes is created. A higher categories score creates more indexes for that cateogry.
 
 #### HomePersonalRequest
+The request is called from [HomePersonalTab](#homepersonaltab). The request calls the API to get for all the six categories a list of 100 news articles. It checks the positivity of the articles and combines all the lists to one news article list which is sent back to the [HomePersonalTab](#homepersonaltab).
 
 #### PositiveWordsRequest
+The request is called from [LoginActivity](#loginactivity) to get a arraylist of strings with all the positive words. The firebase is called to get all the positive words. The words are stored in the [global](#globals) hashmap.
 
 #### ProfileBioRequest
+The request is called from [ProfileBioTab](#profilebiotab). The request calls the firedbase to get the name and email of the user.
 
 #### ProfilePreferencesRequest
+The request is called from [ProfilePreferencesTab](#profilepreferencestab). The request calls the firebase to get the preferences of the user. 
 
-#### ProfileSavedArtilesRequest
+#### ProfileSavedArticlesRequest
+The request is called from [ProfileSavedArticlesTab](#profilesavedarticlestab). The request calls the firebase to get a list of all the saved articles of the user.
 
 #### SourcesFeedRequest
+The request is called from [SourcesFragment](#sourcesfragment). The request calls the API to get news articles based the clicked news source in the drawer.
 
 #### SourcesRequest
+The request is called from [SourcesFragment](#sourcesfragment). The request calls the API to get all the news sources to display them in the drawer.
 
 ### Globals
+Contains a hashmap of the positive words used in [PositiveWordsRequest](#positivewordsrequest).
 
 
   
