@@ -84,10 +84,13 @@ The fragment calls [SourcesRequest](#sourcesrequest) to display all the news sou
 ### FragmentTabs
 
 #### HomeCategoriesTab
+The tab contains a expandable floating action button with buttons for all the different categories. When one of the buttons is clicked ,[HomeCategoriesRequest](#homecategoriesrequest) is called to get a list of positive articles from that category. The list is casted into the [FeedLayout](#feedlayout).
 
 #### HomePersonalTab
+The tab calls [HomePersonalRequest](#homepersonalrequest) to get a list containing positive articles of all the six categories. When the tab received the list with articles, [HomePersonalIndexRequest](#homepersonalindexrequest) is called to get a list of the indexes for the article list. Those indexes are based on the preferences of the user.
 
 #### ProfileBioTab
+The tab calls [ProfileBioRequest](#profilebiorequest) to get the name and email of the user and display it in the textviews. The button also contains 
 
 #### ProfileSavedArticlesTab
 
@@ -102,6 +105,7 @@ The fragment calls [SourcesRequest](#sourcesrequest) to display all the news sou
 
 #### SourcesLayout
 
+
 ### Objects
 
 #### NewsArticles
@@ -111,6 +115,7 @@ The fragment calls [SourcesRequest](#sourcesrequest) to display all the news sou
 #### Preferences
 
 #### User
+
 
 ### Requests
 
