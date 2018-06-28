@@ -8,8 +8,7 @@ PositiveNews is an news application. The application shows news articles based o
 - [Possible improvements for the future](#possible-improvements-for-the-future)
 
 ## Short overview functionalities
-*[6 activities](#activities), [3 adapters](#adapters), [3 fragments](#fragments), [5 fragmenttabs](#fragmenttabs), [3 layouts](#layouts), [4 objects](#objects), [11 requests](#requests), [1 global](#globals)*
- 
+
   StartScreen:
   - [LoginActivity](#loginactivity):
     *User is able to log into the application.*
@@ -46,6 +45,8 @@ PositiveNews is an news application. The application shows news articles based o
   - [Firebase](https://firebase.google.com/)
     
 ## Details
+
+*[6 activities](#activities), [3 adapters](#adapters), [3 fragments](#fragments), [5 fragmenttabs](#fragmenttabs), [3 layouts](#layouts), [4 objects](#objects), [11 requests](#requests), [1 global](#globals)*
 
 ### Activities
 
