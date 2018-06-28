@@ -47,9 +47,10 @@ succesful, a new User is added to the firebase. "firstLogin" is set to true and 
 
 #### ResetActivity
 
-
+The activity creates a opportunity for the user to reset their password in case they forgot the password. When a reset is used, a reset is send to the email adress of the user with a link to reset the password.
 
 #### WalkthroughActivity
+The activity checks if the user logged in for the first time. When it is the first time the walkthrough is shown, else the user is redirected to the [HomeAcitivty](#HomeActivity).
 
 #### HomeActivity
 
