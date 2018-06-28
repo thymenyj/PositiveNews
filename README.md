@@ -40,3 +40,6 @@ People will be starting the day with a positiver worldview when they only read p
 <a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/HomeCategoriesTab.JPG" align="left" height="500" width="250" ></a>
 
 <a href="url"><img src="https://github.com/thymenyj/PositiveNews/blob/master/doc/SourcesFragment.JPG" align="left" height="500" width="250" ></a>
+
+## License 
+[Powered by News API](https://newsapi.org/)
