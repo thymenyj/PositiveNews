@@ -4,29 +4,29 @@ PositiveNews is an news application. The application shows news articles based o
 ## Short overview
  
   StartScreen:
-  - LoginActivity:
+  - [LoginActivity](#loginactivity):
     *User is able to log into the application.*
-  - RegisterActivity:
+  - [RegisterActivity](#registeractivity):
     *User is able to create an account in firebase based on email and password.*
-  - ResetActivity (reset password):
+  - [ResetActivity(reset password)](#resetactivity):
     *User is able to reset the password. A password is sent to their email.*
  
   NewsApp:
-  - ProfileFragment:
-    - ProfileBioTab:
+  - [ProfileFragment](#profilefragment):
+    - [ProfileBioTab](#profilebiotab):
       *Shows the name and email of the user.*
-    - ProfileSavedArticlesTab:
+    - [ProfileSavedArticlesTab](#profilesavedarticlestab):
       *Shows a list of the saved articles of the user.*
-    - ProfilePreferencesTab:
+    - [ProfilePreferencesTab](#profilepreferencestab):
       *Shows the current preferences of the user. The user can change the preferences.*
-  - HomeFragment:
-    - HomePersonalTab:
+  - [HomeFragment](#homefragment):
+    - [HomePersonalTab](#homepersonaltab):
       *Shows a feed of news articles. The articles are selected based on the preferences of the user.*
-    - HomeCategoriesTab:
+    - [HomeCategoriesTab](#homepersonaltab):
       *Shows a feed of news articles based on the clicked cateogry button.*
-  - SourcesFragment:
+  - [SourcesFragment](#sourcesfragment):
     *Shows a feed of news articles based on the selected news source in the drawer.*
-  - Walkthrough (4 slides):
+  - [Walkthrough (4 slides)](#walkthroughactivity):
     - Slide 1,2, 4 (text):
       *Shows a welcomes message*
     - Slide 3 (save initial preferences):
